@@ -38,8 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             response: 'http://localhost/rifas/functions/respuest.php',
             autoclick: 'true',
             test: 'true',
-            name_billing: '$nombre',
             type_doc_billing: 'cc',
+            x_extra1: '$nombre',
+            x_extra2: '$cedula',
+            x_extra3: '$correo',
+            x_extra4: '$celular',
+            x_extra5: '$totalNumeros'
        
         };
         

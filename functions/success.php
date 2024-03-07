@@ -11,6 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $banco = $_GET['banco'];
     $recibo = $_GET['recibo'];
     $total = $_GET['total'];
+    $nombre_cliente = $_GET['nombre_cliente'];
+    $cedula = $_GET['cedula'];
+    $correo = $_GET['correo'];
+    $celular = $_GET['celular'];
+    $totalNumeros = $_GET['totalNumeros'];
     
     // Obtener la fecha en formato adecuado
     $fecha_transaccion = date('Y-m-d H:i:s', strtotime($_GET['fecha']));
@@ -27,7 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
                                 banco,
                                 recibo,
                                 total,
-                                fecha_transaccion)
+                                fecha_transaccion,
+                                nombre_cliente)
                                 VALUES
                                 ('$ref_payco',
                                 '$id_ref_payco',
@@ -36,7 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
                                 '$banco',
                                 '$recibo',
                                 '$total',
-                                '$fecha_transaccion')";
+                                '$fecha_transaccion',
+                                '$nombre_cliente')";
     
     if ($conn->query($sql) === TRUE) {
         echo "Datos insertados en la base de datos con éxito";

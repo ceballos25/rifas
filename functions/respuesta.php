@@ -62,6 +62,31 @@
                 <td class="" id="total">
                 </td>
               </tr>
+              <tr>
+                <td class="bold">nombre</td>
+                <td class="" id="nombre_cliente">
+                </td>
+              </tr>
+              <tr>
+                <td class="bold">cedula</td>
+                <td class="" id="cedula">
+                </td>
+              </tr>
+              <tr>
+                <td class="bold">correo</td>
+                <td class="" id="correo">
+                </td>
+              </tr>
+              <tr>
+                <td class="bold">celular</td>
+                <td class="" id="celular">
+                </td>
+              </tr>
+              <tr>
+                <td class="bold">Total numeros</td>
+                <td class="" id="totalNumeros">
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -194,7 +219,12 @@
                     banco: response.data.x_bank_name,
                     recibo: response.data.x_transaction_id,
                     total: response.data.x_amount + ' ' + response.data.x_currency_code,
-                    fecha: response.data.x_transaction_date
+                    fecha: response.data.x_transaction_date,
+                    nombre_cliente: response.data.x_xextra1,
+                    cedula: response.data.x_extra2,
+                    correo: response.data.x_extra3,
+                    celular: response.data.x_extra4,
+                    totalNumeros: response.data.x_extra5
                     
                     
                 },
@@ -220,7 +250,12 @@
                     banco: response.data.x_bank_name,
                     recibo: response.data.x_transaction_id,
                     total: response.data.x_amount + ' ' + response.data.x_currency_code,
-                    fecha: response.data.x_transaction_date
+                    fecha: response.data.x_transaction_date,
+                    nombre: response.data.x_extra1,
+                    cedula: response.data.x_extra2,
+                    correo: response.data.x_extra3,
+                    celular: response.data.x_extra4,
+                    totalNumeros: response.data.x_extra5
                     
                     
                 },
@@ -248,7 +283,12 @@
                     banco: response.data.x_bank_name,
                     recibo: response.data.x_transaction_id,
                     total: response.data.x_amount + ' ' + response.data.x_currency_code,
-                    fecha: response.data.x_transaction_date
+                    fecha: response.data.x_transaction_date,
+                    nombre: response.data.x_extra1,
+                    cedula: response.data.x_extra2,
+                    correo: response.data.x_extra3,
+                    celular: response.data.x_extra4,
+                    totalNumeros: response.data.x_extra5
                     
                     
                 },
@@ -274,6 +314,11 @@
           $('#banco').text(response.data.x_bank_name);
           $('#autorizacion').text(response.data.x_approval_code);
           $('#total').text(response.data.x_amount + ' ' + response.data.x_currency_code);
+          $('#nombre').text(response.data.x_extra1);
+          $('#cedula').text(response.data.x_extra2);
+          $('#correo').text(response.data.x_extra3);
+          $('#celular').text(response.data.x_extra4);
+          $('#totalNumeros').text(response.data.x_extra5);
 
         } else {
           alert("Error consultando la información");
