@@ -15,6 +15,10 @@ class ComposerStaticInitcf50866825915648a15248c002e0ee6c
         array (
             'WpOrg\\Requests\\' => 15,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'E' => 
         array (
             'Epayco\\' => 7,
@@ -25,6 +29,10 @@ class ComposerStaticInitcf50866825915648a15248c002e0ee6c
         'WpOrg\\Requests\\' => 
         array (
             0 => __DIR__ . '/..' . '/rmccue/requests/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Epayco\\' => 
         array (

@@ -1,5 +1,6 @@
 {
     "require": {
-        "epayco/epayco-php": "^1.6"
+        "epayco/epayco-php": "^1.6",
+        "phpmailer/phpmailer": "^6.9"
     }
 }

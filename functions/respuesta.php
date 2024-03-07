@@ -1,3 +1,4 @@
+<!-- este archivo procesa las respuestas segun sea el caso de la transaccion -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Formulario Pruebas Respuesta</title>
+  <title>Respuesta Transacción</title>
   <!-- Bootstrap -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -63,30 +64,6 @@
                 </td>
               </tr>
               <tr>
-                <td class="bold">nombre</td>
-                <td class="" id="nombre_cliente">
-                </td>
-              </tr>
-              <tr>
-                <td class="bold">cedula</td>
-                <td class="" id="cedula">
-                </td>
-              </tr>
-              <tr>
-                <td class="bold">correo</td>
-                <td class="" id="correo">
-                </td>
-              </tr>
-              <tr>
-                <td class="bold">celular</td>
-                <td class="" id="celular">
-                </td>
-              </tr>
-              <tr>
-                <td class="bold">Total numeros</td>
-                <td class="" id="totalNumeros">
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -221,12 +198,10 @@
                     total: response.data.x_amount + ' ' + response.data.x_currency_code,
                     fecha: response.data.x_transaction_date,
                     nombre_cliente: response.data.x_xextra1,
-                    cedula: response.data.x_extra2,
-                    correo: response.data.x_extra3,
-                    celular: response.data.x_extra4,
-                    totalNumeros: response.data.x_extra5
-                    
-                    
+                    cedula_cliente: response.data.x_xextra2,
+                    correo_cliente: response.data.x_xextra3,
+                    celular_cliente: response.data.x_xextra4,
+                    total_numeros: response.data.x_xextra5  
                 },
                 success: function (data) {
                   $('#modalTransaccionAceptada').modal('show')
@@ -314,7 +289,7 @@
           $('#banco').text(response.data.x_bank_name);
           $('#autorizacion').text(response.data.x_approval_code);
           $('#total').text(response.data.x_amount + ' ' + response.data.x_currency_code);
-          $('#nombre').text(response.data.x_extra1);
+          $('#nombre_cliente').text(response.data.x_extra1);
           $('#cedula').text(response.data.x_extra2);
           $('#correo').text(response.data.x_extra3);
           $('#celular').text(response.data.x_extra4);
