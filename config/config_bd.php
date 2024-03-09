@@ -1,13 +1,14 @@
 <?php
 // Función para obtener la conexión a la base de datos
 function obtenerConexion() {
-    $servername = "localhost";
+    $servername = "127.0.0.1:8080";
     $username = "root";
-    $password = "";
+    $password = "12345";
     $dbname = "rifa_moto";
+    $port = 3307;
 
     // Crear conexión
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname, $port);
 
     // Verificar la conexión
     if ($conn->connect_error) {

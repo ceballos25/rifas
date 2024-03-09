@@ -226,11 +226,11 @@
                     recibo: response.data.x_transaction_id,
                     total: response.data.x_amount + ' ' + response.data.x_currency_code,
                     fecha: response.data.x_transaction_date,
-                    nombre: response.data.x_extra1,
-                    cedula: response.data.x_extra2,
-                    correo: response.data.x_extra3,
-                    celular: response.data.x_extra4,
-                    totalNumeros: response.data.x_extra5
+                    nombre: response.data.x_xextra1,
+                    cedula: response.data.x_xextra2,
+                    correo: response.data.x_xextra3,
+                    celular: response.data.x_xextra4,
+                    totalNumeros: response.data.x_xextra5
                     
                     
                 },

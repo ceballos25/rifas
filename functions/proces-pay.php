@@ -1,33 +1,40 @@
 <!DOCTYPE html>
-<html lang="eS">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Procesar Venta</title>
+    <!-- Se incluye la librería SweetAlert2 desde CDN para mostrar alertas atractivas -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <?php
 // Verifica si los datos han sido enviados mediante POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Accede a los datos del formulario después de escaparlos
+    // Accede a los datos del formulario después de escaparlos para prevenir inyecciones SQL y ataques XSS
     $nombre = htmlspecialchars($_POST["nombre"]);
     $cedula = htmlspecialchars($_POST["cedula"]);
     $correo = htmlspecialchars($_POST["correo"]);
     $celular = htmlspecialchars($_POST["celular"]);
     $totalNumeros = htmlspecialchars($_POST["totalNumeros"]);
+    
+    // Precio unitario de la rifa
     $valorRifa = 5000;
 
+    // Calcula el total a pagar por el usuario
     $totalAPagar = $valorRifa * $totalNumeros;
-    $nombreRifa = "Rifa Moto NS 200 0 KM";
-    $descripcionRifa = "Rifa por una Moto 0 KM ";
 
-    // Procedemos a consultar la conexión a bd
+    // Información de la rifa
+    $nombreRifa = "Rifa Moto NS 200 0 KM";
+    $descripcionRifa = "Rifa por una Moto 0 KM";
+
+    // Intenta conectar a la base de datos
     require_once "../config/config_bd.php";
 
     try {
+        // Obtiene la conexión a la base de datos
         $conn = obtenerConexion();
-
+        
         // Configuración del script de ePayco
         echo "<script src='https://checkout.epayco.co/checkout.js'></script>
         <script>
@@ -39,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 currency: 'COP',
                 country: 'CO',
                 external: 'false',
-                response: 'http://localhost/rifas/functions/respuesta.php',
+                response: 'http://localhost/rifas/functions/respuesta',
                 autoclick: 'true',
                 test: 'true',
                 type_doc_billing: 'cc',
@@ -74,11 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             });
         </script>";
-        
     }
 }
 ?>
-    
 </body>
 </html>
-

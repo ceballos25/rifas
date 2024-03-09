@@ -103,7 +103,7 @@
                </button>
             </div>
             <div class="modal-body">
-               <form method="POST" action="functions/proces-pay.php" id="formulario" class="formulario">
+               <form method="POST" action="functions/proces-pay" id="formulario" class="formulario">
                <div class="container">
                   <div class="row">
                      <div class="col-md-6">
@@ -204,7 +204,8 @@
       </div>
    </div>
    <!-- end modals -->
-   <!-- service section -->
+
+   <!-- section premios -->
    <div class="premios" id="premios" style="margin-top:5%">
       <div class="container">
          <div class="row">
