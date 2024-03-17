@@ -39,6 +39,7 @@
    <!-- sidebar -->
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script src="js/custom.js"></script>
+   
 </head>
 <!-- body -->
 
@@ -47,30 +48,6 @@
    <div class="loader_bg">
       <div class="loader"><img src="images/loading.gif" alt="#" /></div>
    </div>
-    
-   <?php 
-        echo '<script>
-        const end = Date.now() + 5 * 1000;
-
-            const colors = ["#fc0", "#ffffff"];
-
-            (function frame() {
-
-
-            confetti({
-                particleCount: 2,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 },
-                colors: colors,
-            });
-
-            if (Date.now() < end) {
-                requestAnimationFrame(frame);
-            }
-            })();
-        </script>'
-   ?>
    
    <!-- end loader -->
    <!-- header -->
@@ -79,33 +56,11 @@
       <div class="header">
          <div class="container-fluid">
             <div class="row">
-               <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
                   <div class="full">
-                     <div>
-                        <p class="logo__texto" href="index.html">Rifas</p>
+                  <div class="col-md-6 ">
+                        <img id="img" src="images/los-reyes.png" width="25%" alt="rifa-moto">
                      </div>
                   </div>
-               </div>
-               <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 position-sticky">
-                  <nav class="navigation navbar navbar-expand-md navbar-dark">
-                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
-                        aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                     </button>
-                     <div class="collapse navbar-collapse" id="navbarsExample04">
-                        <ul class="navbar-nav mr-auto">
-                           <li class="nav-item active">
-                              <a class="nav-link" href="index.php">Inicio</a>
-                           </li>
-
-                           <li class="nav-item">
-                              <a class="nav-link" href="#premios">Premio</a>
-                           </li>
-
-                        </ul>
-                     </div>
-                  </nav>
-
                </div>
             </div>
          </div>

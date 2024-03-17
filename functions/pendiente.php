@@ -19,12 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $cedula_cliente = filter_input(INPUT_GET, 'cedula_cliente', FILTER_SANITIZE_STRING);
     $correo_cliente = filter_input(INPUT_GET, 'correo_cliente', FILTER_SANITIZE_EMAIL);
     $celular_cliente = filter_input(INPUT_GET, 'celular_cliente', FILTER_SANITIZE_STRING);
-    $departamento_cliente = filter_input(INPUT_GET, 'departamento_cliente', FILTER_SANITIZE_STRING);
-    $ciudad_cliente = filter_input(INPUT_GET, 'ciudad_cliente', FILTER_SANITIZE_STRING);
     $total_numeros = filter_input(INPUT_GET, 'total_numeros', FILTER_SANITIZE_STRING);
 
     // Verificar si todos los datos necesarios están presentes
-    if (!$ref_payco || !$id_ref_payco || !$respuesta || !$motivo || !$banco || !$recibo || !$total || !$nombre_cliente || !$cedula_cliente || !$correo_cliente || !$celular_cliente || !$departamento_cliente || !$ciudad_cliente || !$total_numeros) {        
+    if (!$ref_payco || !$id_ref_payco || !$respuesta || !$motivo || !$banco || !$recibo || !$total || !$nombre_cliente || !$cedula_cliente || !$correo_cliente || !$celular_cliente || !$total_numeros) {        
         header("Location: ../");
         exit;
     }
@@ -36,12 +34,12 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $conn = obtenerConexion();
 
     // Query de inserción de datos de la venta (usando sentencias preparadas)
-    $sql = "INSERT INTO ventas (referencia_pago, id_ref_payco, respuesta, motivo, banco, recibo, total, fecha_transaccion, nombre_cliente, cedula_cliente, correo_cliente, celular_cliente, departamento, ciudad, total_numeros)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+    $sql = "INSERT INTO ventas (referencia_pago, id_ref_payco, respuesta, motivo, banco, recibo, total, fecha_transaccion, nombre_cliente, cedula_cliente, correo_cliente, celular_cliente, total_numeros)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssdsssssssi", $ref_payco, $id_ref_payco, $respuesta, $motivo, $banco, $recibo, $total, $fecha_transaccion, $nombre_cliente, $cedula_cliente, $correo_cliente, $celular_cliente, $departamento_cliente, $ciudad_cliente, $total_numeros);
-
+    $stmt->bind_param("ssssssdsssssi", $ref_payco, $id_ref_payco, $respuesta, $motivo, $banco, $recibo, $total, $fecha_transaccion, $nombre_cliente, $cedula_cliente, $correo_cliente, $celular_cliente, $total_numeros);
+    
     if ($stmt->execute()) {
         // Obtener el ID de la última inserción
         $id_insercion_venta = $stmt->insert_id;
@@ -78,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         }
 
         // Mensaje de éxito
-        echo "Datos insertados en la base de datos con éxito. Números generados: " . implode(', ', $numeros_generados);
+        //echo "Datos insertados en la base de datos con éxito. Números generados: " . implode(', ', $numeros_generados);
 
         // Configurar PHPMailer
         $mail = new PHPMailer(true);
@@ -101,8 +99,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $mail->Subject = 'Información del Sorteo';
 
             // Cuerpo del mensaje
-            $mensaje = "Gracias por tu compra. Aquí está la información de tu transacción:<br><br>" .
-                    "Números generados: " . implode(', ', $numeros_generados);
+            $mensaje = "Estimado cliente, se acaba de generar la transación, sin embargo esta se encuentra en estado PENDIENTE, cuando se encuentre APROBADA por su banco, le enviaremos un
+            la confirmaión, y los números, le deseamos mucha suerte";
             $mail->Body = $mensaje;
 
             // Enviar correo electrónico

@@ -55,6 +55,44 @@ $(function () {
 	});
 });
 
+
+/*funtion para levantar el modal con las tarjetas*/
+function modal_x2() {
+    // Abre el modal
+    $('#modalRifa').modal('show');
+
+    // Selecciona la opción deseada
+    $('#opciones_boletas').val('2');
+    $('#opciones_boletas').trigger('input');
+  }
+
+  function modal_x4() {
+    // Abre el modal
+    $('#modalRifa').modal('show');
+
+    // Selecciona la opción deseada
+    $('#opciones_boletas').val('4');
+    $('#opciones_boletas').trigger('input');
+  }
+
+  function modal_x6() {
+    // Abre el modal
+    $('#modalRifa').modal('show');
+
+    // Selecciona la opción deseada
+    $('#opciones_boletas').val('6');
+    $('#opciones_boletas').trigger('input');
+  }
+
+  function modal_x10() {
+    // Abre el modal
+    $('#modalRifa').modal('show');
+
+    // Selecciona la opción deseada
+    $('#opciones_boletas').val('10');
+    $('#opciones_boletas').trigger('input');
+  }
+
 /* Verificar campos vacíos */
 $(document).ready(function () {
     $('#opciones_boletas').on('change', function () {
@@ -122,9 +160,9 @@ $(document).ready(function () {
         // Calcular el total a pagar en función de la selección
         var totalPagar;
         if (opcionSeleccionada === "Otro" && cantidadInput !== "") {
-            totalPagar = parseInt(cantidadInput) * 5000; // 5000 es el valor por boleta
+            totalPagar = parseInt(cantidadInput) * 6000; // 5000 es el valor por boleta
         } else {
-            totalPagar = parseInt(opcionSeleccionada) * 5000; // 5000 es el valor por boleta
+            totalPagar = parseInt(opcionSeleccionada) * 6000; // 5000 es el valor por boleta
         }
 
         // Actualizar los elementos en la página con los nuevos valores
@@ -172,8 +210,19 @@ $(document).ready(function () {
   
 	  return true; // La validación pasa
 	}
+	$('.ir-arriba').click(function(){
+		$('body, html').animate({
+			scrollTop: '0px'
+		}, 200);
+	});
+
+	$(window).scroll(function(){
+		if( $(this).scrollTop() > 0 ){
+			$('.ir-arriba').slideDown(300);
+		} else {
+			$('.ir-arriba').slideUp(300);
+		}
+	});
   });
-
-
 
 

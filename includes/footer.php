@@ -38,7 +38,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-12">
-                     <p>© 2024 Desarrollado por<a href=""> Cristian Ceballos</a></p>
+                     <p>© Los Reyes del Sorteo</p>
                   </div>
                </div>
             </div>

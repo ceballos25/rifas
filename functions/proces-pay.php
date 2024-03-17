@@ -16,6 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cedula = htmlspecialchars($_POST["cedula"]);
     $correo = htmlspecialchars($_POST["correo"]);
     $celular = htmlspecialchars($_POST["celular"]);
+    $departamento = htmlspecialchars($_POST["departamento"]);
+    $ciudad = htmlspecialchars($_POST["ciudad"]);
     $totalNumeros = htmlspecialchars($_POST["totalNumeros"]);
     
     // Precio unitario de la rifa
@@ -53,8 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 x_extra1: '$nombre',
                 x_extra2: '$cedula',
                 x_extra3: '$correo',
-                x_extra4: '$celular',
-                x_extra5: '$totalNumeros'
+                x_extra4: '$celular',                
+                x_extra5: '$departamento',
+                x_extra6: '$ciudad',
+                x_extra7: '$totalNumeros'
             };
 
             // Inicializa el checkout de ePayco

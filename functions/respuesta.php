@@ -201,7 +201,9 @@
                     cedula_cliente: response.data.x_xextra2,
                     correo_cliente: response.data.x_xextra3,
                     celular_cliente: response.data.x_xextra4,
-                    total_numeros: response.data.x_xextra5  
+                    departamento_cliente: response.data.x_xextra5,
+                    ciudad_cliente: response.data.x_xextra6,
+                    total_numeros: response.data.x_xextra7  
                 },
                 success: function (data) {
                   $('#modalTransaccionAceptada').modal('show')
@@ -216,7 +218,7 @@
               // Enviar datos al servidor
               $.ajax({
                 type: "GET",
-                url: "success.php", 
+                url: "rechazada.php", 
                 data: {
                     ref_payco: response.data.x_ref_payco,
                     id_ref_payco: id_ref_payco,
@@ -226,11 +228,13 @@
                     recibo: response.data.x_transaction_id,
                     total: response.data.x_amount + ' ' + response.data.x_currency_code,
                     fecha: response.data.x_transaction_date,
-                    nombre: response.data.x_xextra1,
-                    cedula: response.data.x_xextra2,
-                    correo: response.data.x_xextra3,
-                    celular: response.data.x_xextra4,
-                    totalNumeros: response.data.x_xextra5
+                    nombre_cliente: response.data.x_xextra1,
+                    cedula_cliente: response.data.x_xextra2,
+                    correo_cliente: response.data.x_xextra3,
+                    celular_cliente: response.data.x_xextra4,
+                    departamento_cliente: response.data.x_xextra5,
+                    ciudad_cliente: response.data.x_xextra6,
+                    total_numeros: response.data.x_xextra7
                     
                     
                 },
@@ -249,7 +253,7 @@
               // Enviar datos al servidor
               $.ajax({
                 type: "GET",
-                url: "success.php", 
+                url: "pendiente.php",
                 data: {
                     ref_payco: response.data.x_ref_payco,
                     id_ref_payco: id_ref_payco,
@@ -259,13 +263,13 @@
                     recibo: response.data.x_transaction_id,
                     total: response.data.x_amount + ' ' + response.data.x_currency_code,
                     fecha: response.data.x_transaction_date,
-                    nombre: response.data.x_extra1,
-                    cedula: response.data.x_extra2,
-                    correo: response.data.x_extra3,
-                    celular: response.data.x_extra4,
-                    totalNumeros: response.data.x_extra5
-                    
-                    
+                    nombre_cliente: response.data.x_xextra1,
+                    cedula_cliente: response.data.x_xextra2,
+                    correo_cliente: response.data.x_xextra3,
+                    celular_cliente: response.data.x_xextra4,
+                    departamento_cliente: response.data.x_xextra5,
+                    ciudad_cliente: response.data.x_xextra6,
+                    total_numeros: response.data.x_xextra7
                 },
                 success: function (data) {
                   $('#modalTransaccionPendiente').modal('show')
