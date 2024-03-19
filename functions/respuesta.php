@@ -12,7 +12,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/respuesta.css">
   
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -79,8 +79,19 @@
         <h2 class="modal-title text-center" id="exampleModalLabel">La transacción fue aprobada</h2>
       </div>
       <div class="modal-body">
-        En los próximos minutos recibirá al correo electrónico, los números de su sorteo y toda la información relacionada al mismo.
-      </div>
+            <p>Gracias por su participación, estos son los números generados:</p>
+          <!-- Contenedor de los párrafos -->
+          <div class="container mt-2">
+          <div class="row">
+            <div class="col-6 position-relative d-flex">
+              <p class="parrafo-sobre-imagen">1234</p>
+              <p class="parrafo-sobre-imagen">1234</p>
+            </div>
+          </div>
+
+        </div>
+        </div>
+          <!-- fin -->
       <div class="modal-footer">
         <button type="button" class="btn btn-btn-principal" data-dismiss="modal">De acuerdo</button>
       </div>

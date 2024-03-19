@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $mail->Port = 587;
 
             // Configuraciones generales
-            $mail->setFrom('ceballosmarincristiancamilo@gmail.com', 'Rifa Pulsa NS 200');
+            $mail->setFrom('ceballosmarincristiancamilo@gmail.com', 'Sorteo Moto MT-14');
             $mail->addAddress($correo_cliente, $nombre_cliente);
             $mail->isHTML(true);
             $mail->CharSet = 'UTF-8'; // Configurar el juego de caracteres

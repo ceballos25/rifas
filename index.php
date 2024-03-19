@@ -1,57 +1,102 @@
-   <!-- start include  --> <?php include 'includes/header.php'?>
+   <!-- start include  <?php include 'includes/header.php'?>
    <!-- end include -->
    <span class="ir-arriba"></span>
    <!-- banner -->
-   <section class="banner_main animate__fadeInDownBig mb-5 contenido">
-     <div id="banner1">
-       <div class="carousel-inner">
-         <div class="carousel-item active">
-           <div class="container">
-             <div class="carousel-caption">
-               <div class="row">
-                 <div class="col-md-8 img-fluid moto">
-                   <img id="img" src="images/fondo.png" width="100%" alt="rifa-moto">
-                   <button class="read_more animate__animated animate__delay-1s animate__fadeInUpBig animate__tada mt-3 mb-3 float-center" data-toggle="modal" data-target="#modalRifa">¡La quiero! </button>
-                 </div>
-                 <div class="col-md-4">
-                   <div class="text-bg mb-0">
-                     <h1 class="pb-1 text-center">
-                       <span class="text-deration yellow animate__animated animate__delay-1s animate__fadeInRightBig"> Gánate una </span>
-                       <br class="animate__animated animate__delay-1s animate__fadeInDownBig">
-                       <span class="animate__animated animate__delay-1s animate__fadeInDownBig mb-0 texto-con-mancha">Yamaha MT-15</span>
-                     </h1>
-                     <p class="text-center animate__animated animate__delay-1s animate__fadeInRightBig mb-0">Por tan solo $6.000 (cada número) puedes participar y ganarte una espectacular Moto 0km</p>
-                     <div class="animate__animated animate__delay-1s animate__fadeInDownBig mt-5">
-                       <p class="mb-1 text-center fs-6">Números vendidos:</p>
-                       <div class="progress" style="height: 26px;">
-                         <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-   </section>
+   <!-- whatsapp -->
+   <div class="btn-whatsapp">
+        <a href="https://api.whatsapp.com/send?phone=+573245894268&amp;text=Hola,%20Quiero%20vi%20realizar%20una%20compra%20" target="_blank">
+            <img src="images/whatsapp.png" alt="boton_whatsapp">
+        </a>
+    </div>
+    <section class="banner_main mb-5 contenido">
+  <div id="banner1" class="animate__animated animate__zoomInDown">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container">
+        <h1 class="pb-1 text-center text-bg titulo-pequeno">
+            <span class="text-decoration yellow">Gánate una</span>
+            <br>
+            <span class="yellow">Yamaha MT-15</span>
+          </h1>
+          <div class="row direction">
+            <div class="col-md-6">
+              <div class="text-bg">
+                <h1 class="pb-1 text-center titulo-grande">
+                  <span class="text-decoration yellow">Gánate una</span>
+                  <br>
+                  <span class="yellow">Yamaha MT-15</span>
+                </h1>
+                <p class="text-center mb-0">Por tan solo $6.000 (cada número) puedes participar y ganarte una espectacular Moto 0 KM</p>
+                <div class="mt-5">
+                  <p class="mb-1 text-center fs-6">Números vendidos:</p>
+                  <div class="progress" style="height: 26px;">
+                    <div id="progress-bar" class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>              
+                  </div>                
+                </div>
+              </div>
+              <section class="premios-header"> 
+            <span><h2 class="yellow text-center mt-5 h2">¡Y eso no es todo...!</h2></span>
+            <span class="text-bg p text-center">
+              <p>Tenemos cinco (5) números premiados por <span class="paqute">$200.000</span> cada uno.</p>
+            </span>
+            <div class="container">
+              <div class="row">
+                <div class="col-sm position-relative">
+                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-header">
+                  <p class="parrafo-sobre-imagen">4015</p>
+                </div>
+                <div class="col-sm position-relative">
+                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-header">
+                  <p class="parrafo-sobre-imagen">1250</p>
+                </div>
+                <div class="col-sm position-relative">
+                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-header">
+                  <p class="parrafo-sobre-imagen">3590</p>
+                </div>
+                <div class="col-sm position-relative">
+                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-header">
+                  <p class="parrafo-sobre-imagen">9478</p>
+                </div>
+                <div class="col-sm position-relative">
+                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-header">
+                  <p class="parrafo-sobre-imagen">5845</p>
+                </div>
+              </div>
+            </div>    
+          </section>
+            </div>
+            <div class="col-md-6 img-fluid moto">
+              <div class="contenedor__img-sorteo">
+                <img class="img__sorteo" src="images/fondo.jpg" width="100%" alt="rifa-moto">
+              </div>
+              <div class="btn-formulario text-center mt-3">
+                <button class="read_more mb-3" data-toggle="modal" data-target="#modalRifa">¡La quiero!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
    <!-- end banner -->
-   <section>
+   <section data-aos="zoom-in">
      <div class="text-bg text-center">
        <h2 class="h2">
-         <span class="yellow animate__animated animate__delay-1s animate__fadeInRightBig"> Paquete de Oportunidades</span>
+         <span class="yellow"> Paquete de Oportunidades</span>
        </h2>
-       <p class="animate__animated animate__delay-1s animate__fadeInRightBig">Escoge el paquete que mejor se adapte a ti, tenemos 5 números premiados por <span style="background-color: #00FF00; border-radius: 50%; font-weight: 600; font-size: 22px; color:#000; padding:10px; font-style: oblique">$200.000</span>
-         <span> cada uno
-       </p>
-     </div>
+       <p>Escoge el paquete de oportunidades que mejor se adpte a ti. Recuerda que entre más números compres, más oportunidades tienes de ganar.</p>
+    </div>
+      </div>
    </section>
    <!-- start Modals Rifa-Moto -->
-   <div class="modal fade bd-example-modal-lg" id="modalRifa" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal fade bd-example-modal-lg" id="modalRifa" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">  
      <div class="modal-dialog modal-lg" role="document">
        <div class="modal-content">
          <div class="modal-header bg-main">
-           <h2 class="modal-title text-center title-rifa-modal" id="exampleModalLabel">Gran Rifa Moto Pulsar NS-200 0KM</h2>
+           <h2 class="modal-title title-rifa-modal" id="exampleModalLabel"> Espectacular Sorteo Moto 0 KM</h2>
            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">&times;</span>
            </button>
@@ -104,11 +149,11 @@
 
                      <div class="input-group mb-3">
                        <div class="input-group-prepend">
-                         <span class="input-group-text" id="">
+                         <span class="input-group-text">
                            <i class="fa-solid fa-list"></i>
                          </span>
                        </div>
-                       <select class="custom-select" id="departamento" name="departamento">
+                       <select class="custom-select" id="departamento" name="departamento" required>
                         <option value="">Departamento</option>
                         <option value="Amazonas">Amazonas</option>
                         <option value="Antioquia">Antioquia</option>
@@ -152,7 +197,7 @@
                            <i class="fa-solid fa-list"></i>
                          </span>
                        </div>
-                       <select class="custom-select" id="ciudad" name="ciudad">
+                       <select class="custom-select" id="ciudad" name="ciudad" required>
                          <option value="">Ciudad</option>
                         <!-- Amazonas -->
                         <option value="Leticia">Leticia</option>
@@ -248,7 +293,7 @@
                          </span>
                        </div>
                        <select class="custom-select" id="opciones_boletas" name="opciones_boletas">
-                         <option value="Cantidad de Oportunidades">Oportunidades</option>
+                         <option value="Cantidad de Oportunidades" required>Oportunidades</option>
                          <option value="2">x2 = $12.000</option>
                          <option value="4">x4 = $24.000</option>
                          <option value="6">x6 = $36.000</option>
@@ -270,7 +315,7 @@
                      <!-- Contenedor de totales -->
                      <div class="d-flex">
                        <p>Números a Jugar: <strong>
-                           </span>
+                           <span></span>
                          </strong>
                        </p>
                        <input type="text" class="ml-1 w-50 input-total-numeros" name="totalNumeros" id="totalNumeros" value="0" readonly>
@@ -281,7 +326,7 @@
                    </div>
                  </div>
                  <div class="col-sm mt-4">
-                   <img src="images/fondo.png" alt="">
+                   <img src="images/fondo__.png" alt="">
                    <div class="alert alert-success mt-2 efecto" id="success-alert" role="alert">
                      <p class="text-sm">
                        <i class="fa-solid fa-circle-info"></i> Tenga en cuenta:
@@ -296,7 +341,7 @@
            <div class="d-flex justify-content-between">
              <div class="ml-4">
                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-               <button class="btn btn-secondary" type="submit">Pagar</button>
+               <button class="btn btn-secondary btn-pay" type="submit">Finalizar Compra <i class="fas fa-shopping-cart"></i></button>
              </div>
            </div>
          </div>
@@ -304,80 +349,113 @@
        </div>
      </div>
    </div>
-   <!-- end modals -->
-   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="500000">
-     <ol class="carousel-indicators">
-       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-     </ol>
-     <div class="carousel-inner">
-       <div class="carousel-item active">
-         <div class="card-group text-center">
-           <div class="card m-2 animate__animated animate__bounceInDown">
-             <a type="button" data-toggle="modal" data-target="#modalRifa" onclick="modal_x2()">
-               <div class="card-body d-grid">
-                 <img src="images/x2.png" alt="" class="img-fluid rounded-lg-img animate__animated animate__bounceInDown">
-               </div>
-             </a>
-           </div>
-           <div class="card m-2 borde animate__animated animate__bounceInDown">
-           <a type="button" data-toggle="modal" data-target="#modalRifa" onclick="modal_x4()">
-               <div class="card-body">
-                 <img src="images/x4.png" alt="" class="img-fluid rounded-lg-img animate__animated animate__bounceInDown">
-               </div>
-             </a>
-           </div>
-         </div>
-       </div>
-       <div class="carousel-item">
-         <div class="card-group text-center">
-           <div class="card m-2 animate__animated animate__bounceInDown">
-           <a type="button" data-toggle="modal" data-target="#modalRifa" onclick="modal_x6()">
-               <div class="card-body">
-                 <img src="images/x6.png" alt="" class="img-fluid rounded-lg-img">
-               </div>
-             </a>
-           </div>
-           <div class="card m-2 borde animate__animated animate__bounceInDown">
-           <a type="button" data-toggle="modal" data-target="#modalRifa" onclick="modal_x10()">
-               <div class="card-body">
-                 <img src="images/x10.png" alt="" class="img-fluid rounded-lg-img">
-               </div>
-             </a>
-           </div>
-         </div>
-       </div>
-       <div class="carousel-item">
-         <div class="card-group text-center">
-           <div class="card m-2 animate__animated animate__bounceInDown">
-             <a type="button">
-               <div class="card-body">
-                 <img src="images/x2.png" alt="" class="img-fluid rounded-lg-img">
-               </div>
-             </a>
-           </div>
-           <div class="card m-2 borde animate__animated animate__bounceInDown">
-             <a type="button">
-               <div class="card-body">
-                 <img src="images/x4.png" alt="" class="img-fluid rounded-lg-img">
-               </div>
-             </a>
-           </div>
-         </div>
-       </div>
-     </div>
-     <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
-       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-       <span class="sr-only">Previous</span>
-     </button>
-     <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
-       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-       <span class="sr-only">Next</span>
-     </button>
+
+   <div class="contenedor-cards">
+      <div class="card1" data-aos="flip-left">
+        <div class="promocion">
+          <h2>x2</h2>
+        </div>
+
+        <div class="precio">
+          <h2>$12.000</h2>
+          <i>Pesos colombianos</i>
+          
+        </div>
+        <div class="cta-buy">
+          <button onclick="modal_x2()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
+          
+        </div>
+      </div>
+
+      <div class="card1" data-aos="flip-left">
+        <div class="promocion">
+          <h2>x4</h2>
+        </div>
+
+        <div class="precio">
+          <h2>$24.000</h2>
+          <i>Pesos colombianos</i>
+          
+        </div>
+        <div class="cta-buy">
+          <button onclick="modal_x4()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
+          
+        </div>
+      </div>
    </div>
+
+   <div class="espaciado">
+     <span class="espaciado"></span>
+   </div>
+
+   <div class="contenedor-cards">
+      <div class="card1" data-aos="flip-left">
+        <div class="promocion">
+          <h2>x6</h2>
+        </div>
+
+        <div class="precio">
+          <h2>$36.000</h2>
+          <i>Pesos colombianos</i>
+          
+        </div>
+        <div class="cta-buy">
+          <button onclick="modal_x6()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
+          
+        </div>
+      </div>
+
+      <div class="card1"data-aos="flip-left">
+        <div class="promocion">
+          <h2>x10</h2>
+        </div>
+
+        <div class="precio">
+          <h2>$60.000</h2>
+          <i>Pesos colombianos</i>
+          
+        </div>
+        <div class="cta-buy">
+          <button onclick="modal_x10()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
+          
+        </div>
+      </div>
+   </div>
+
+      <section class="mt-5 mb-5 premios-footer"> 
+      <span><h2 class="yellow text-center mt-5 h2" data-aos="zoom-in">¡Y eso no es todo...!</h2></span>
+      <span class="text-bg p text-center" data-aos="zoom-in">
+        <p>Tenemos cinco (5) números premiados por <span class="paqute">$200.000</span> cada uno.</p>
+      </span>
+      <div class="container"data-aos="flip-left">
+      <div class="row">
+                <div class="col-sm position-relative relative-footer">
+                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-footer">
+                  <p class="parrafo-sobre-imagen-footer">4015</p>
+                </div>
+                <div class="col-sm position-relative relative-footer">
+                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-footer">
+                  <p class="parrafo-sobre-imagen-footer">1250</p>
+                </div>
+                <div class="col-sm position-relative relative-footer">
+                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-footer">
+                  <p class="parrafo-sobre-imagen-footer">3590</p>
+                </div>
+                <div class="col-sm position-relative relative-footer">
+                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-footer">
+                  <p class="parrafo-sobre-imagen-footer">9478</p>
+                </div>
+                <div class="col-sm position-relative relative-footer">
+                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-footer">
+                  <p class="parrafo-sobre-imagen-footer">5845</p>
+                </div>
+              </div>
+      </div>    
+    </section>
+ 
+
    <!-- end service section -->
    <!-- start include footer --> <?php include 'includes/footer.php' ?>
    <!-- end include footer -->
    </body>
-   </html>
+   </html> -->

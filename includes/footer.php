@@ -1,24 +1,27 @@
    <!--  footer -->
-   <footer class="mt-3">
+      <footer class="mt-3" data-aos="zoom-in">
       <div class="footer">
          <div class="container">
             <div class="row">
                <div class="col-md-4">
-                  <p class="logo__texto">Rifas</p>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit adipisci beatae velit cumque
-                     i</p>
+                  <h3 class="logo__texto">El día de tu Suerte</h3>
+                  <p>Emocionante oportunidad para ganar una espectacular Moto. ¡Participa y gana!.</p>
                </div>
                <div class="col-md-4">
-                  <div class="fid_box">
+                  <div class="fid_box text-center">
                      <h3>Contáctanos </h3>
                      <ul class="location_icon">
-                        <li><a href="Javascript:void(0)"><i class="fa fa-map-marker" aria-hidden="true"></i></a> Calle
-                           tal tal tal</li>
+                        <li>
+                        <a type="button" class="btn btn-dark btn-small p-0 mr-2"><span class="fa fa-instagram m-2"></span></a>
+                        <button type="button" class="btn btn-dark btn-small p-0"><span class="fa fa-facebook m-2"></span></button>
+                        <button type="button" class="btn btn-dark btn-small p-0 ml-2"><span class="fa fa-youtube m-2"></span></button>
+                     </li>
+                        
                         <li><a href="Javascript:void(0)"><i class="fa fa-phone" aria-hidden="true"></i></a>
                            (+57) 1234567890
                         </li>
                         <li><a href="Javascript:void(0)"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                           pruebas@gmail.com</li>
+                           info@eldiadetusuerte.com</li>
                      </ul>
                   </div>
                </div>
@@ -33,12 +36,12 @@
                </div>
             </div>
          </div>
-
+         <hr class="bg-dark">
          <div class="copyright">
             <div class="container">
                <div class="row">
                   <div class="col-md-12">
-                     <p>© Los Reyes del Sorteo</p>
+                     <p>© EL día de tu Suerte</p>
                   </div>
                </div>
             </div>
