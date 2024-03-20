@@ -31,13 +31,18 @@ AOS.init({
 });
 // Función principal al cargar el documento
 
-  /* Preloader */
-  $(window).on('load', function () {
-      $('.loader_bg').fadeOut();
+// Función principal al cargar el documento
+$(function () {
+	
+	"use strict";
+	
+	/* Preloader */
+	setTimeout(function () {
+		$('.loader_bg').fadeToggle();
+	}, 100);
+	
 
 });
-
-
 	// Obtener la URL
 	function getURL() { window.location.href; } 
 	var protocol = location.protocol; 
@@ -125,6 +130,23 @@ function modal_x2() {
     $('#opciones_boletas').val('10');
     $('#opciones_boletas').trigger('input');
   }
+
+  function modal_xotro() {
+    // Obtener el valor del input_manual
+    var valorInput = $('#input_manual').val();
+  
+    // Abre el modal
+    $('#modalRifa').modal('show');
+  
+    // Selecciona la opción deseada y activa el evento change
+    $('#opciones_boletas').val('Otro').change();
+  
+    // Establece el valor del input del modal
+    $('#otroInput').val(valorInput);
+    $('#otroInput').trigger('input');
+  }
+  
+  
 
 /* Verificar campos vacíos */
 $(document).ready(function () {
@@ -258,4 +280,18 @@ $(document).ready(function () {
 	});
   });
 
-
+  function actualizarTotalManual() {
+    var valorIngresado = parseInt(document.getElementById("input_manual").value);
+    if (valorIngresado < 2) {
+      document.getElementById("totalManual").innerText = "$0";
+    } else {
+      var total = valorIngresado * 6000;
+      var totalConSeparador = total.toLocaleString();
+      document.getElementById("totalManual").innerText = "$" + totalConSeparador;
+    }
+  }
+  
+// In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+  $('.js-example-basic-single').select2();
+});

@@ -3,12 +3,14 @@
       <div class="footer">
          <div class="container">
             <div class="row">
-               <div class="col-md-4">
-                  <h3 class="logo__texto">El día de tu Suerte</h3>
-                  <p>Emocionante oportunidad para ganar una espectacular Moto. ¡Participa y gana!.</p>
+               <div class="col-md-4 mt-4">
+                  <h3 class="">El día de tu Suerte</h3>
+                  <p>Emocionante oportunidad para ganar una espectacular Moto. ¡Participa y gana!. <br>
+                  <a class="habeas mt-2" href="#">Política de HABEAS DATA</a>
+               </p>
                </div>
-               <div class="col-md-4">
-                  <div class="fid_box text-center">
+               <div class="col-md-4 mt-4">
+                  <div class="fid_box">
                      <h3>Contáctanos </h3>
                      <ul class="location_icon">
                         <li>
@@ -18,7 +20,7 @@
                      </li>
                         
                         <li><a href="Javascript:void(0)"><i class="fa fa-phone" aria-hidden="true"></i></a>
-                           (+57) 1234567890
+                           (+57) 311 645 9275
                         </li>
                         <li><a href="Javascript:void(0)"><i class="fa fa-envelope" aria-hidden="true"></i></a>
                            info@eldiadetusuerte.com</li>
@@ -26,7 +28,7 @@
                   </div>
                </div>
 
-               <div class="col-md-4">
+               <div class="col-md-4 mt-4">
                   <div class="fid_box">
                      <h3>Medios de Pago </h3>
                   </div>
@@ -41,7 +43,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-12">
-                     <p>© EL día de tu Suerte</p>
+                     <p>© EL día de tu Suerte</p>                     
                   </div>
                </div>
             </div>

@@ -4,7 +4,7 @@
    <!-- banner -->
    <!-- whatsapp -->
    <div class="btn-whatsapp">
-        <a href="https://api.whatsapp.com/send?phone=+573245894268&amp;text=Hola,%20Quiero%20vi%20realizar%20una%20compra%20" target="_blank">
+        <a href="https://api.whatsapp.com/send?phone=+573116459275&amp;text=Hola,%20Quiero%20vi%20realizar%20una%20compra%20" target="_blank">
             <img src="images/whatsapp.png" alt="boton_whatsapp">
         </a>
     </div>
@@ -26,7 +26,7 @@
                   <br>
                   <span class="yellow">Yamaha MT-15</span>
                 </h1>
-                <p class="text-center mb-0">Por tan solo $6.000 (cada número) puedes participar y ganarte una espectacular Moto 0 KM</p>
+                <p class="text-center mb-0">Por tan solo $6.000 (cada número) puedes participar y ganarte una espectacular Moto 0 KM.</p>
                 <div class="mt-5">
                   <p class="mb-1 text-center fs-6">Números vendidos:</p>
                   <div class="progress" style="height: 26px;">
@@ -82,12 +82,78 @@
 
 
    <!-- end banner -->
-   <section data-aos="zoom-in">
-     <div class="text-bg text-center">
+   <section data-aos="zoom-in m-5">
+     <div class="text-bg text-center m-2">
+       <h2 class="h2">
+         <span class="yellow"> ¿Dudas?</span>
+       </h2>
+      </div>
+      </div>
+
+      <div class="p-3 mx-3">
+      <div class="accordion" id="accordionExample">
+      <div class="card card-dudas">
+        <div class="card-header bg-dark m-0 p-1" id="headingOne">
+          <h2 class="mb-0 p-0">
+            <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <h3 class="text-white" >¿Cuándo es el Sorteo?  <i class="fa-solid fa-chevron-down mr-auto"></i></h3>
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body fs-5">
+          Una vez se haya vendido el <b>80%</b> de los números, se notificará vía correo electrónico <i class="fa-solid fa-envelope"></i> y a través de nuestras redes sociales <a href="https://instagram.com/@jorgeherreraoficial" target="_blank"> <i class="fa-brands fa-instagram"></i></a> la fecha oficial del sorteo.</div>
+        </div>
+      </div>
+
+      <div class="card card-dudas mt-1">
+        <div class="card-header bg-dark p-1" id="headingTwo">
+          <h2 class="mb-0 p-0">
+            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <h3 class="text-white">¿Con cuál Lotería? <i class="fa-solid fa-chevron-down mr-auto"></i></h3>
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body">
+           Últimas (4) cifras de la Lotería de Medellín.
+          </div>
+        </div>
+      </div>
+      <div class="card card-dudas mt-1">
+        <div class="card-header bg-dark p-1" id="headingThree">
+          <h2 class="mb-0 p-0">
+            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <h3 class="text-white">¿A donde me puedo comunicar? <i class="fa-solid fa-chevron-down mr-auto"></i></h3>
+            </button>
+          </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            Puedes hacerlo a través de:
+            <ol>
+              <i class="fa-brands fa-whatsapp"></i> 311 645 9275
+              <li><i class="fa-brands fa-instagram"></i> jorgeherreraoficial</li>
+              <li><i class="fa-solid fa-envelope"></i> info@eldiadetusuerte.com</li>
+
+            </ol>
+
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+   </section>
+
+
+      <section data-aos="zoom-in">
+     <div class="text-bg text-center mt-5">
        <h2 class="h2">
          <span class="yellow"> Paquete de Oportunidades</span>
+         <p>Escoge el paquete de oportunidades que mejor se adapte a ti. Recuerda que entre más números compres, más oportunidades tienes de ganar.</p>
        </h2>
-       <p>Escoge el paquete de oportunidades que mejor se adpte a ti. Recuerda que entre más números compres, más oportunidades tienes de ganar.</p>
     </div>
       </div>
    </section>
@@ -388,6 +454,7 @@
      <span class="espaciado"></span>
    </div>
 
+
    <div class="contenedor-cards">
       <div class="card1" data-aos="flip-left">
         <div class="promocion">
@@ -420,7 +487,25 @@
           
         </div>
       </div>
+
+      <div class="card1"data-aos="flip-left">
+        <div class="m-2">
+          <p>Puedes digitar la Cantidad:</p>
+          <input type="number" required min="2" max="830" placeholder="Aquí:" id="input_manual" class="pb-4 input-manual" oninput="actualizarTotalManual()">
+        </div>
+
+        <div class="precio">
+          <h2 id="totalManual">$0</h2>
+          <i>Pesos colombianos</i>
+          
+        </div>
+        <div class="cta-buy">
+          <button onclick="modal_xotro()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>          
+        </div>
+      </div>
    </div>
+
+
 
       <section class="mt-5 mb-5 premios-footer"> 
       <span><h2 class="yellow text-center mt-5 h2" data-aos="zoom-in">¡Y eso no es todo...!</h2></span>
@@ -452,10 +537,8 @@
               </div>
       </div>    
     </section>
- 
-
    <!-- end service section -->
    <!-- start include footer --> <?php include 'includes/footer.php' ?>
    <!-- end include footer -->
    </body>
-   </html> -->
+   </html>

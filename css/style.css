@@ -20,8 +20,6 @@
 
 * {
      box-sizing: border-box !important;
-     font-family: 'monospace', 'sans-serif';
-
 }
 
 #whatsapp {
@@ -433,7 +431,7 @@ button {
 }
 
 .paqute{
-     background-color: #FFA500; border-radius: 50%; font-weight: 600; font-size: 22px; color:#000; padding:5px; font-style: oblique
+     background-color: #FFA500; border-radius: 50%; font-weight: 600; font-size: 18px; color:#000; padding:4px; font-style: oblique
 }
 
 .parrafo-sobre-imagen {
@@ -702,19 +700,12 @@ input.form-control:focus {
      width: 15%;
 }
 
-.card {
-     border-radius: 40px 40px 40px 40px;
-
+.div#headingTwo{
+     margin-bottom: 0px !important;
 }
 
-div.card {
-     transition: background-color 0.5s;
-}
-
-div.card:hover {
-     background-color: rgb(0, 0, 0);
-     transition: background-color 0.5s;
-     color: #ffffff;
+.card-dudas{
+     background-color: #fff !important;
 }
 
 .borde {
@@ -725,6 +716,18 @@ div.card:hover {
      border: none;
 }
 
+.input-manual{
+     font-family: 'Pacifico', cursive;
+     font-size: 40px;
+     color: #00FF00;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+     max-width: 80%;
+     letter-spacing: 2px;
+     font-weight: bold;
+     border: none;
+     text-align: center;
+     padding-bottom: 16px !important;
+}
 
 /** about section **/
 
@@ -1102,6 +1105,10 @@ ul.location_icon li a {
      padding-top: 25px;
      font-weight: normal;
      padding-right: 0 !important;
+}
+.habeas{
+     color: #fff;
+     margin-top: 15px;
 }
 
 
@@ -1548,6 +1555,23 @@ p.text-center.mb-0 {
      }
 
      .banner_main{
-          padding-top: 100px !important;
+          padding-top: 95 !important;
      }
+}
+
+.btn:focus{
+     box-shadow: none;
+}
+
+/*footer images premiadas*/
+@media screen and (max-width:766px) {
+
+     ul.location_icon li {
+          font-size: 17px;
+          text-align: center;
+           display: block;
+          margin-top: 10px;
+          line-height: 26px;
+     }
+
 }
