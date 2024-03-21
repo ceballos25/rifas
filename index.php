@@ -4,7 +4,7 @@
    <!-- banner -->
    <!-- whatsapp -->
    <div class="btn-whatsapp">
-        <a href="https://api.whatsapp.com/send?phone=+573116459275&amp;text=Hola,%20Quiero%20vi%20realizar%20una%20compra%20" target="_blank">
+        <a href="https://wa.link/2u006f" target="_blank">
             <img src="images/whatsapp.png" alt="boton_whatsapp">
         </a>
     </div>
@@ -13,7 +13,7 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="container">
-        <h1 class="pb-1 text-center text-bg titulo-pequeno">
+          <h1 class="pb-1 text-center text-bg titulo-pequeno">
             <span class="text-decoration yellow">Gánate una</span>
             <br>
             <span class="yellow">Yamaha MT-15</span>
@@ -26,7 +26,7 @@
                   <br>
                   <span class="yellow">Yamaha MT-15</span>
                 </h1>
-                <p class="text-center mb-0">Por tan solo $6.000 (cada número) puedes participar y ganarte una espectacular Moto 0 KM.</p>
+                <p class="text-center mb-0 mt-2">Por tan solo $6.000 (cada número) puedes participar y ganarte una espectacular Moto 0 KM.</p>
                 <div class="mt-5">
                   <p class="mb-1 text-center fs-6">Números vendidos:</p>
                   <div class="progress" style="height: 26px;">
@@ -34,45 +34,72 @@
                   </div>                
                 </div>
               </div>
-              <section class="premios-header"> 
-            <span><h2 class="yellow text-center mt-5 h2">¡Y eso no es todo...!</h2></span>
-            <span class="text-bg p text-center">
-              <p>Tenemos cinco (5) números premiados por <span class="paqute">$200.000</span> cada uno.</p>
-            </span>
-            <div class="container">
-              <div class="row">
-                <div class="col-sm position-relative">
-                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-header">
-                  <p class="parrafo-sobre-imagen">4015</p>
-                </div>
-                <div class="col-sm position-relative">
-                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-header">
-                  <p class="parrafo-sobre-imagen">1250</p>
-                </div>
-                <div class="col-sm position-relative">
-                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-header">
-                  <p class="parrafo-sobre-imagen">3590</p>
-                </div>
-                <div class="col-sm position-relative">
-                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-header">
-                  <p class="parrafo-sobre-imagen">9478</p>
-                </div>
-                <div class="col-sm position-relative">
-                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-header">
-                  <p class="parrafo-sobre-imagen">5845</p>
+              <div class="text-bg mt-4">
+                <h2 class="yellow text-center">¿Dudas?</h2>
+                <div class="p-3 mx-3">
+                  <div class="accordion" id="accordionExample">
+                    <div class="card card-dudas">
+                      <div class="card-header bg-dark m-0 p-1" id="headingOne">
+                        <h2 class="mb-0 p-0">
+                          <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <h3 class="text-white">¿Cuándo es el Sorteo? <i class="fa-solid fa-chevron-down mr-auto"></i></h3>
+                          </button>
+                        </h2>
+                      </div>
+
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body fs-5">
+                          Jugará con las últimas (4) cifras de la Lotería de Medellín. Una vez se haya vendido el <b>80%</b> de los números, se anunciará la fecha del sorteo en nuestro sitio Web y nuestras redes sociales. <i class="fa-brands fa-instagram"></i>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card card-dudas mt-1">
+                      <div class="card-header bg-dark p-1" id="headingThree">
+                        <h2 class="mb-0 p-0">
+                          <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <h3 class="text-white">¿A dónde me puedo comunicar? <i class="fa-solid fa-chevron-down mr-auto"></i></h3>
+                          </button>
+                        </h2>
+                      </div>
+
+                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                          Puedes hacerlo a través de:
+                          <ol>
+                            <li><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.link/2u006f">311 645 9275</a></li>
+                            <li><i class="fa-brands fa-instagram"></i> <a href="https://instagram.com/jorgeherreraoficial" target="_blank">jorgeherreraoficial</a></li>
+                            <li><i class="fa-solid fa-envelope"></i> info@eldiadetusuerte.com</li>
+                          </ol>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>    
-          </section>
             </div>
-            <div class="col-md-6 img-fluid moto">
-              <div class="contenedor__img-sorteo">
-                <img class="img__sorteo" src="images/fondo.jpg" width="100%" alt="rifa-moto">
-              </div>
-              <div class="btn-formulario text-center mt-3">
-                <button class="read_more mb-3" data-toggle="modal" data-target="#modalRifa">¡La quiero!</button>
+
+            <div class="col-md-6 img-fluid moto position-relative">
+            <div class="contenedor__img-sorteo">
+              <img class="img__sorteo" src="images/fondo.jpg" width="100%" alt="rifa-moto">
+              <div class="numeros-premiados" data-aos="zoom-in">
+                <span class="text-bg p text-center">
+                <p class="text-premiados pb-2">Tenemos cinco (5) números premiados por <span class="paqute">$200.000</span> cada uno.</p>
+                <div class="text-center">
+                <span id="paquete-premios-numeros" class="paqute fondo-numero-premiado">4015</span> <span class="paqute fondo-numero-premiado">1250</span> <span class="paqute fondo-numero-premiado">3590</span> <span class="paqute fondo-numero-premiado">9478</span> <span class="paqute fondo-numero-premiado">5845</span>
+
+                </div>
+              </span>
+
               </div>
             </div>
+
+        <div class="d-flex justify-content-center mt-5 mb-4">
+        <button class="read_more" data-toggle="modal" data-target="#modalRifa">¡Participar! <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
+        </div>
+    </div>
+
+
           </div>
         </div>
       </div>
@@ -80,72 +107,7 @@
   </div>
 </section>
 
-
    <!-- end banner -->
-   <section data-aos="zoom-in m-5">
-     <div class="text-bg text-center m-2">
-       <h2 class="h2">
-         <span class="yellow"> ¿Dudas?</span>
-       </h2>
-      </div>
-      </div>
-
-      <div class="p-3 mx-3">
-      <div class="accordion" id="accordionExample">
-      <div class="card card-dudas">
-        <div class="card-header bg-dark m-0 p-1" id="headingOne">
-          <h2 class="mb-0 p-0">
-            <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <h3 class="text-white" >¿Cuándo es el Sorteo?  <i class="fa-solid fa-chevron-down mr-auto"></i></h3>
-            </button>
-          </h2>
-        </div>
-
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <div class="card-body fs-5">
-          Una vez se haya vendido el <b>80%</b> de los números, se notificará vía correo electrónico <i class="fa-solid fa-envelope"></i> y a través de nuestras redes sociales <a href="https://instagram.com/@jorgeherreraoficial" target="_blank"> <i class="fa-brands fa-instagram"></i></a> la fecha oficial del sorteo.</div>
-        </div>
-      </div>
-
-      <div class="card card-dudas mt-1">
-        <div class="card-header bg-dark p-1" id="headingTwo">
-          <h2 class="mb-0 p-0">
-            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            <h3 class="text-white">¿Con cuál Lotería? <i class="fa-solid fa-chevron-down mr-auto"></i></h3>
-            </button>
-          </h2>
-        </div>
-
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-          <div class="card-body">
-           Últimas (4) cifras de la Lotería de Medellín.
-          </div>
-        </div>
-      </div>
-      <div class="card card-dudas mt-1">
-        <div class="card-header bg-dark p-1" id="headingThree">
-          <h2 class="mb-0 p-0">
-            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            <h3 class="text-white">¿A donde me puedo comunicar? <i class="fa-solid fa-chevron-down mr-auto"></i></h3>
-            </button>
-          </h2>
-        </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-          <div class="card-body">
-            Puedes hacerlo a través de:
-            <ol>
-              <i class="fa-brands fa-whatsapp"></i> 311 645 9275
-              <li><i class="fa-brands fa-instagram"></i> jorgeherreraoficial</li>
-              <li><i class="fa-solid fa-envelope"></i> info@eldiadetusuerte.com</li>
-
-            </ol>
-
-          </div>
-        </div>
-      </div>
-    </div>
-      </div>
-   </section>
 
 
       <section data-aos="zoom-in">
@@ -157,8 +119,97 @@
     </div>
       </div>
    </section>
-   <!-- start Modals Rifa-Moto -->
-   <div class="modal fade bd-example-modal-lg" id="modalRifa" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">  
+   <div class="contenedor-cards">
+      <div class="card1" data-aos="flip-left">
+        <div class="promocion">
+          <h2>x2</h2>
+        </div>
+
+        <div class="precio">
+          <h2>$12.000</h2>
+          <i>Pesos colombianos</i>
+          
+        </div>
+        <div class="cta-buy">
+          <button onclick="modal_x2()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
+          
+        </div>
+      </div>
+
+      <div class="card1" data-aos="flip-left">
+        <div class="promocion">
+          <h2>x4</h2>
+        </div>
+
+        <div class="precio">
+          <h2>$24.000</h2>
+          <i>Pesos colombianos</i>
+          
+        </div>
+        <div class="cta-buy">
+          <button onclick="modal_x4()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
+          
+        </div>
+      </div>
+   </div>
+
+   <div class="espaciado">
+     <span class="espaciado"></span>
+   </div>
+
+
+   <div class="contenedor-cards">
+      <div class="card1" data-aos="flip-left">
+        <div class="promocion">
+          <h2>x6</h2>
+        </div>
+
+        <div class="precio">
+          <h2>$36.000</h2>
+          <i>Pesos colombianos</i>
+          
+        </div>
+        <div class="cta-buy">
+          <button onclick="modal_x6()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
+          
+        </div>
+      </div>
+
+      <div class="card1"data-aos="flip-left">
+        <div class="promocion">
+          <h2>x10</h2>
+        </div>
+
+        <div class="precio">
+          <h2>$60.000</h2>
+          <i>Pesos colombianos</i>
+          
+        </div>
+        <div class="cta-buy">
+          <button onclick="modal_x10()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
+          
+        </div>
+      </div>
+
+      <div class="card1"data-aos="flip-left">
+        <div class="m-2">
+          <p>Puedes digitar la Cantidad:</p>
+          <input type="number" required min="2" max="830" placeholder="Aquí:" id="input_manual" class="pb-4 input-manual" oninput="actualizarTotalManual()">
+        </div>
+
+        <div class="precio">
+          <h2 id="totalManual">$0</h2>
+          <i>Pesos colombianos</i>
+          
+        </div>
+        <div class="cta-buy">
+          <button onclick="modal_xotro()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>          
+        </div>
+      </div>
+   </div>
+
+      <!-- start Modals Rifa-Moto -->
+      <div class="modal fade bd-example-modal-lg" id="modalRifa" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">  
      <div class="modal-dialog modal-lg" role="document">
        <div class="modal-content">
          <div class="modal-header bg-main">
@@ -168,7 +219,7 @@
            </button>
          </div>
          <div class="modal-body">
-           <form method="POST" action="functions/proces-pay" id="formulario" class="formulario">
+           <form method="POST" action="functions/pagar.php" id="formulario" class="formulario">
              <div class="container">
                <div class="row">
                  <div class="col-md-6">
@@ -407,7 +458,10 @@
            <div class="d-flex justify-content-between">
              <div class="ml-4">
                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-               <button class="btn btn-secondary btn-pay" type="submit">Finalizar Compra <i class="fas fa-shopping-cart"></i></button>
+
+               <button class="btn btn-secondary btn-pay" type="submit">Pagar <i class="fas fa-shopping-cart"></i></button>
+
+                              
              </div>
            </div>
          </div>
@@ -416,129 +470,8 @@
      </div>
    </div>
 
-   <div class="contenedor-cards">
-      <div class="card1" data-aos="flip-left">
-        <div class="promocion">
-          <h2>x2</h2>
-        </div>
-
-        <div class="precio">
-          <h2>$12.000</h2>
-          <i>Pesos colombianos</i>
-          
-        </div>
-        <div class="cta-buy">
-          <button onclick="modal_x2()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
-          
-        </div>
-      </div>
-
-      <div class="card1" data-aos="flip-left">
-        <div class="promocion">
-          <h2>x4</h2>
-        </div>
-
-        <div class="precio">
-          <h2>$24.000</h2>
-          <i>Pesos colombianos</i>
-          
-        </div>
-        <div class="cta-buy">
-          <button onclick="modal_x4()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
-          
-        </div>
-      </div>
-   </div>
-
-   <div class="espaciado">
-     <span class="espaciado"></span>
-   </div>
-
-
-   <div class="contenedor-cards">
-      <div class="card1" data-aos="flip-left">
-        <div class="promocion">
-          <h2>x6</h2>
-        </div>
-
-        <div class="precio">
-          <h2>$36.000</h2>
-          <i>Pesos colombianos</i>
-          
-        </div>
-        <div class="cta-buy">
-          <button onclick="modal_x6()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
-          
-        </div>
-      </div>
-
-      <div class="card1"data-aos="flip-left">
-        <div class="promocion">
-          <h2>x10</h2>
-        </div>
-
-        <div class="precio">
-          <h2>$60.000</h2>
-          <i>Pesos colombianos</i>
-          
-        </div>
-        <div class="cta-buy">
-          <button onclick="modal_x10()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>
-          
-        </div>
-      </div>
-
-      <div class="card1"data-aos="flip-left">
-        <div class="m-2">
-          <p>Puedes digitar la Cantidad:</p>
-          <input type="number" required min="2" max="830" placeholder="Aquí:" id="input_manual" class="pb-4 input-manual" oninput="actualizarTotalManual()">
-        </div>
-
-        <div class="precio">
-          <h2 id="totalManual">$0</h2>
-          <i>Pesos colombianos</i>
-          
-        </div>
-        <div class="cta-buy">
-          <button onclick="modal_xotro()">COMPRAR <span class="img-logo"><img src="images/haga-clic-aqui.png" alt=""></span></button>          
-        </div>
-      </div>
-   </div>
-
-
-
-      <section class="mt-5 mb-5 premios-footer"> 
-      <span><h2 class="yellow text-center mt-5 h2" data-aos="zoom-in">¡Y eso no es todo...!</h2></span>
-      <span class="text-bg p text-center" data-aos="zoom-in">
-        <p>Tenemos cinco (5) números premiados por <span class="paqute">$200.000</span> cada uno.</p>
-      </span>
-      <div class="container"data-aos="flip-left">
-      <div class="row">
-                <div class="col-sm position-relative relative-footer">
-                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-footer">
-                  <p class="parrafo-sobre-imagen-footer">4015</p>
-                </div>
-                <div class="col-sm position-relative relative-footer">
-                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-footer">
-                  <p class="parrafo-sobre-imagen-footer">1250</p>
-                </div>
-                <div class="col-sm position-relative relative-footer">
-                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-footer">
-                  <p class="parrafo-sobre-imagen-footer">3590</p>
-                </div>
-                <div class="col-sm position-relative relative-footer">
-                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-footer">
-                  <p class="parrafo-sobre-imagen-footer">9478</p>
-                </div>
-                <div class="col-sm position-relative relative-footer">
-                  <img src="images/ticket.png" alt="" class="img-ticket premios-img-footer">
-                  <p class="parrafo-sobre-imagen-footer">5845</p>
-                </div>
-              </div>
-      </div>    
-    </section>
    <!-- end service section -->
    <!-- start include footer --> <?php include 'includes/footer.php' ?>
    <!-- end include footer -->
-   </body>
+  </body>
    </html>

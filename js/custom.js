@@ -295,3 +295,18 @@ $(document).ready(function () {
 $(document).ready(function() {
   $('.js-example-basic-single').select2();
 });
+
+
+const mp = new MercadoPago('TEST-1859148285126847-032101-d2216afdce6aa18f8fd9c3829427e528-1734060269');
+const bricksBuilder = mp.bricks();
+
+mp.bricks().create("wallet", "wallet_container", {
+  initialization: {
+      preferenceId: "<PREFERENCE_ID>",
+  },
+customization: {
+texts: {
+ valueProp: 'smart_option',
+},
+},
+});
