@@ -69,29 +69,29 @@ $(function () {
 	});
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+// document.addEventListener('DOMContentLoaded', function() {
 
-// Obtener la barra de progreso
-var progressBar = document.getElementById('progress-bar');
+// // Obtener la barra de progreso
+// var progressBar = document.getElementById('progress-bar');
 
-// Inicializar el valor de la barra de progreso
-var progressValue = 0;
+// // Inicializar el valor de la barra de progreso
+// var progressValue = 0;
 
-// Función para llenar la barra de progreso de 5% en 5%
-function fillProgressBar() {
-  if (progressValue <= 20) {
-    progressValue += 5;
-    progressBar.style.width = progressValue + '%';
-    progressBar.setAttribute('aria-valuenow', progressValue);
-    progressBar.textContent = progressValue + '%';
-  } else {
-    clearInterval(progressInterval);
-  }
-}
+// // Función para llenar la barra de progreso de 5% en 5%
+// function fillProgressBar() {
+//   if (progressValue <= 20) {
+//     progressValue += 5;
+//     progressBar.style.width = progressValue + '%';
+//     progressBar.setAttribute('aria-valuenow', progressValue);
+//     progressBar.textContent = progressValue + '%';
+//   } else {
+//     clearInterval(progressInterval);
+//   }
+// }
 
-// Llamar a la función fillProgressBar cada cierto intervalo de tiempo (por ejemplo, cada segundo)
-var progressInterval = setInterval(fillProgressBar, 3000);
-});
+// // Llamar a la función fillProgressBar cada cierto intervalo de tiempo (por ejemplo, cada segundo)
+// var progressInterval = setInterval(fillProgressBar, 3000);
+// });
 
 
 /*funtion para levantar el modal con las tarjetas*/
@@ -134,7 +134,18 @@ function modal_x2() {
   function modal_xotro() {
     // Obtener el valor del input_manual
     var valorInput = $('#input_manual').val();
-  
+    
+    if(valorInput <2){
+      Swal.fire({
+        icon: "error",
+        title: "Algo Salió Mal",
+        text: "Debes especificar la catidad de oportunidades, recuerda que debe ser mínimo (2)",
+        confirmButtonColor: "#000",
+      });
+      $('#input_manual').val('2');
+      $('#input_manual').trigger('input');
+      return;
+    }
     // Abre el modal
     $('#modalRifa').modal('show');
   
@@ -145,6 +156,17 @@ function modal_x2() {
     $('#otroInput').val(valorInput);
     $('#otroInput').trigger('input');
   }
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    var inputNombre = document.querySelector('input[name="nombre"]');
+    inputNombre.addEventListener("input", function() {
+      if (inputNombre.validity.tooShort) {
+        inputNombre.setCustomValidity("Por favor, completa tu nombre");
+      } else {
+        inputNombre.setCustomValidity("");
+      }
+    });
+  });
   
   
 
@@ -229,26 +251,24 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-	$(".formulario").submit(function (event) {
-	  // Evitar el envío automático del formulario
-	  event.preventDefault();
-  
-	  // Realizar la validación de campos antes de enviar el formulario
-	  if (validarCampos()) {
-		// Enviar el formulario
-		this.submit();
-		//resetea el formulario, en caso de que regresen a la página
-		document.getElementById("formulario").reset();
-	  } else {
-		// Mostrar un mensaje de error o realizar alguna acción cuando la validación falla
-		Swal.fire({
-		  icon: "error",
-		  title: "Algo Salió Mal",
-		  text: "La cantidad Mínima para participar es de (2) números",
-		  confirmButtonColor: "#000",
-		});
-	  }
-	});
+  $(".formulario").submit(function (event) {
+    // Evitar el envío automático del formulario
+    event.preventDefault();
+
+    // Realizar la validación de campos antes de enviar el formulario
+    if (validarCampos()) {
+      // Enviar el formulario
+      this.submit();
+    } else {
+      // Mostrar un mensaje de error o realizar alguna acción cuando la validación falla
+      Swal.fire({
+        icon: "error",
+        title: "Algo Salió Mal",
+        text: "La cantidad Mínima para participar es de (2) números",
+        confirmButtonColor: "#000",
+      });
+    }
+  });
   
 	// Función para validar campos
 	function validarCampos() {
@@ -290,23 +310,59 @@ $(document).ready(function () {
       document.getElementById("totalManual").innerText = "$" + totalConSeparador;
     }
   }
-  
-// In your Javascript (external .js resource or <script> tag)
+
+
+
+ // Esta función agrega la clase al botón y realiza la validación en la base de datos para consultar los números disponibles
 $(document).ready(function() {
-  $('.js-example-basic-single').select2();
-});
+  // Agrega un evento de escucha al botón
+  $('.btn-pay').click(function(e) {
+      e.preventDefault(); // Evita que el formulario se envíe automáticamente
 
-
-const mp = new MercadoPago('TEST-1859148285126847-032101-d2216afdce6aa18f8fd9c3829427e528-1734060269');
-const bricksBuilder = mp.bricks();
-
-mp.bricks().create("wallet", "wallet_container", {
-  initialization: {
-      preferenceId: "<PREFERENCE_ID>",
-  },
-customization: {
-texts: {
- valueProp: 'smart_option',
-},
-},
+      var btn = $(this);
+      btn.addClass('disabled'); // Deshabilita el botón para evitar múltiples clics
+      btn.find('.spinner-border').removeClass('d-none'); // Muestra el ícono de carga
+      
+      // Realiza la consulta AJAX antes de enviar el formulario
+      $.ajax({
+          url: './functions/mercadopago/contar-numeros-disponibles.php', // Aquí va la URL de tu archivo PHP que realiza la consulta a la base de datos
+          type: 'POST',
+          dataType: 'json',
+          data: {totalNumeros: $('#totalNumeros').val()}, // Envía el valor del input totalNumeros
+          success: function(response) {
+              // Verifica la respuesta del servidor
+              if (response.success) {
+                  // Si la consulta es exitosa y la cantidad es válida, envía el formulario
+                  $('#formulario').submit();
+              } else {
+                  // Si hay un error, muestra una alerta con SweetAlert2
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Algo salió mal',
+                      confirmButtonColor: "#000",
+                      text: response.message,
+                      onClose: function() {
+                          // Habilita nuevamente el botón y oculta el ícono de carga
+                          btn.removeClass('disabled');
+                          btn.find('.spinner-border').addClass('d-none');
+                      }
+                  });
+              }
+          },
+          error: function() {
+              // Si hay un error en la solicitud AJAX, muestra una alerta
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Algo salió mal',
+                  text: 'Error al realizar la consulta. Por favor, intenta nuevamente.',
+                  confirmButtonColor: "#000",
+                  onClose: function() {
+                      // Habilita nuevamente el botón y oculta el ícono de carga
+                      btn.removeClass('disabled');
+                      btn.find('.spinner-border').addClass('d-none');
+                  }
+              });
+          }
+      });
+  });
 });

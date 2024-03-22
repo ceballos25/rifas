@@ -1,13 +1,33 @@
-   <!-- start include  <?php include 'includes/header.php'?>
-   <!-- end include -->
+  
+   <?php include 'includes/header.php';
+         include 'config/config_bd.php';      
+        
+         $conn = obtenerConexion();
+
+      
+      $sql = "SELECT COUNT(numero) as total FROM numeros_vendidos";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+          $row = $result->fetch_assoc();
+          $cantidadVendida = $row["total"];
+      } else {
+          $cantidadVendida = 0;
+      }
+
+      $porcentaje = ($cantidadVendida / 1000) * 100;
+      $conn->close();
+   ?>
+   
    <span class="ir-arriba"></span>
    <!-- banner -->
    <!-- whatsapp -->
    <div class="btn-whatsapp">
-        <a href="https://wa.link/2u006f" target="_blank">
-            <img src="images/whatsapp.png" alt="boton_whatsapp">
-        </a>
+  <a href="https://wa.link/2u006f" target="_blank">
+      <img src="images/whatsapp.png" alt="boton_whatsapp">
+  </a>
     </div>
+
     <section class="banner_main mb-5 contenido">
   <div id="banner1" class="animate__animated animate__zoomInDown">
     <div class="carousel-inner">
@@ -30,7 +50,7 @@
                 <div class="mt-5">
                   <p class="mb-1 text-center fs-6">Números vendidos:</p>
                   <div class="progress" style="height: 26px;">
-                    <div id="progress-bar" class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>              
+                  <div id="progress-bar" class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="<?php echo $porcentaje; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $porcentaje; ?>%</div>
                   </div>                
                 </div>
               </div>
@@ -49,8 +69,8 @@
 
                       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body fs-5">
-                          Jugará con las últimas (4) cifras de la Lotería de Medellín. Una vez se haya vendido el <b>80%</b> de los números, se anunciará la fecha del sorteo en nuestro sitio Web y nuestras redes sociales. <i class="fa-brands fa-instagram"></i>
-                        </div>
+                        Jugará con las (4) cifras de la L0t3teria de Medellín. Al completar el <b>80%</b> de los números, anunciaremos la fecha del sorteo en nuestro sitio Web y redes sociales.  
+                      </div>
                       </div>
                     </div>
 
@@ -117,8 +137,8 @@
          <p>Escoge el paquete de oportunidades que mejor se adapte a ti. Recuerda que entre más números compres, más oportunidades tienes de ganar.</p>
        </h2>
     </div>
-      </div>
    </section>
+
    <div class="contenedor-cards">
       <div class="card1" data-aos="flip-left">
         <div class="promocion">
@@ -194,7 +214,7 @@
       <div class="card1"data-aos="flip-left">
         <div class="m-2">
           <p>Puedes digitar la Cantidad:</p>
-          <input type="number" required min="2" max="830" placeholder="Aquí:" id="input_manual" class="pb-4 input-manual" oninput="actualizarTotalManual()">
+          <input type="number" required min="2" leng="830" placeholder="Aquí:" id="input_manual" class="pb-4 input-manual" oninput="actualizarTotalManual()">
         </div>
 
         <div class="precio">
@@ -208,7 +228,7 @@
       </div>
    </div>
 
-      <!-- start Modals Rifa-Moto -->
+      <!-- start Modals-Moto -->
       <div class="modal fade bd-example-modal-lg" id="modalRifa" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">  
      <div class="modal-dialog modal-lg" role="document">
        <div class="modal-content">
@@ -219,7 +239,7 @@
            </button>
          </div>
          <div class="modal-body">
-           <form method="POST" action="functions/pagar.php" id="formulario" class="formulario">
+           <form method="POST" action="functions/mercadopago/pagar.php" id="formulario" class="formulario" autocompleate="off">
              <div class="container">
                <div class="row">
                  <div class="col-md-6">
@@ -231,7 +251,7 @@
                            <i class="fa-solid fa-user"></i>
                          </span>
                        </div>
-                       <input type="text" class="form-control" placeholder="Nombre:" aria-label="Nombre" aria-describedby="nombre" required name="nombre">
+                       <input type="text" class="form-control" minlength="5" placeholder="Nombre:" aria-label="Nombre" aria-describedby="nombre" required name="nombre" title="Por favor, completa tu nombre">
                      </div>
                    </div>
                    <div class="form-group">
@@ -240,8 +260,8 @@
                          <span class="input-group-text" id="cedula">
                            <i class="fa-solid fa-address-card"></i>
                          </span>
-                       </div>
-                       <input type="number" class="form-control" placeholder="Cedula:" aria-label="Cedula" aria-describedby="Cedula" required name="cedula">
+                       </div>                       
+                       <input type="number" required class="form-control" min="10"  placeholder="Cedula:" aria-label="Cedula" aria-describedby="Cedula" name="cedula">
                      </div>
                    </div>
                    <div class="form-group">
@@ -261,7 +281,7 @@
                            <i class="fa-solid fa-mobile-retro"></i>
                          </span>
                        </div>
-                       <input type="number" class="form-control" placeholder="Celular:" aria-label="Celular" aria-describedby="Celular" required name="celular">
+                       <input type="number" class="form-control" min="10" placeholder="Celular:" aria-label="Celular" aria-describedby="Celular" required name="celular">
                      </div>
 
                      <div class="input-group mb-3">
@@ -270,42 +290,42 @@
                            <i class="fa-solid fa-list"></i>
                          </span>
                        </div>
-                       <select class="custom-select" id="departamento" name="departamento" required>
+
+                       <select class="custom-select" id="usp-custom-departamento-de-residencia" name="departamento" required>
                         <option value="">Departamento</option>
-                        <option value="Amazonas">Amazonas</option>
-                        <option value="Antioquia">Antioquia</option>
-                        <option value="Arauca">Arauca</option>
-                        <option value="Atlántico">Atlántico</option>
-                        <option value="Bogotá, D.C.">Bogotá, D.C.</option>
-                        <option value="Bolívar">Bolívar</option>
-                        <option value="Boyacá">Boyacá</option>
-                        <option value="Caldas">Caldas</option>
-                        <option value="Caquetá">Caquetá</option>
-                        <option value="Casanare">Casanare</option>
-                        <option value="Cauca">Cauca</option>
-                        <option value="Cesar">Cesar</option>
-                        <option value="Chocó">Chocó</option>
-                        <option value="Córdoba">Córdoba</option>
-                        <option value="Cundinamarca">Cundinamarca</option>
-                        <option value="Guainía">Guainía</option>
-                        <option value="Guaviare">Guaviare</option>
-                        <option value="Huila">Huila</option>
-                        <option value="La Guajira">La Guajira</option>
-                        <option value="Magdalena">Magdalena</option>
-                        <option value="Meta">Meta</option>
-                        <option value="Nariño">Nariño</option>
-                        <option value="Norte de Santander">Norte de Santander</option>
-                        <option value="Putumayo">Putumayo</option>
-                        <option value="Quindío">Quindío</option>
-                        <option value="Risaralda">Risaralda</option>
-                        <option value="San Andrés y Providencia">San Andrés y Providencia</option>
-                        <option value="Santander">Santander</option>
-                        <option value="Sucre">Sucre</option>
-                        <option value="Tolima">Tolima</option>
-                        <option value="Valle del Cauca">Valle del Cauca</option>
-                        <option value="Vaupés">Vaupés</option>
-                        <option value="Vichada">Vichada</option>
-                       </select>
+                        <option value="Antioquía">ANTIOQUIA</option>
+                        <option value="Amazonas">AMAZONAS</option>
+                        <option value="Arauca">ARAUCA</option>
+                        <option value="Atlántico">ATLÁNTICO</option>
+                        <option value="Bolívar">BOLÍVAR</option>
+                        <option value="Boyacá">BOYACÁ</option>
+                        <option value="Caldas">CALDAS</option>
+                        <option value="Caquetá">CAQUETÁ</option>
+                        <option value="Casanare">CASANARE</option>
+                        <option value="Cauca">CAUCA</option>
+                        <option value="Cesar">CESAR</option>
+                        <option value="Chocó">CHOCÓ</option>
+                        <option value="Córdoba">CÓRDOBA</option>
+                        <option value="Cundinamarca">CUNDINAMARCA</option>
+                        <option value="Guainía">GUAINÍA</option>
+                        <option value="Guaviare">GUAVIARE</option>
+                        <option value="Huila">HUILA</option>
+                        <option value="La Guajira">LA GUAJIRA</option>
+                        <option value="Magdalena">MAGDALENA</option>
+                        <option value="Meta">META</option>
+                        <option value="Nariño">NARIÑO</option>
+                        <option value="Norte de Santander">NORTE DE SANTANDER</option>
+                        <option value="Putumayo">PUTUMAYO</option>
+                        <option value="Quindío">QUINDÍO</option>
+                        <option value="Risaralda">RISARALDA</option>
+                        <option value="San Andrés y Providencia">SAN ANFRÉS Y PROVIDENCIA</option>
+                        <option value="Santander">SANTANDER</option>
+                        <option value="Sucre">SUCRE</option>
+                        <option value="Tolima">TOLIMA</option>
+                        <option value="Valle del Cauca">VALL DEL CAUCA</option>
+                        <option value="Vaupés">VAUPÉS</option>
+                        <option value="Vichada">VICHADA</option>
+                       </select>                      
                      </div>
 
                      <div class="input-group mb-3">
@@ -314,92 +334,8 @@
                            <i class="fa-solid fa-list"></i>
                          </span>
                        </div>
-                       <select class="custom-select" id="ciudad" name="ciudad" required>
-                         <option value="">Ciudad</option>
-                        <!-- Amazonas -->
-                        <option value="Leticia">Leticia</option>
-                        <option value="Puerto Nariño">Puerto Nariño</option>
-                        <!-- Antioquia -->
-                        <option value="Medellín">Medellín</option>
-                        <option value="Envigado">Envigado</option>
-                        <option value="Itagüí">Itagüí</option>
-                        <!-- Arauca -->
-                        <option value="Arauca">Arauca</option>
-                        <option value="Saravena">Saravena</option>
-                        <!-- Atlántico -->
-                        <option value="Barranquilla">Barranquilla</option>
-                        <option value="Soledad">Soledad</option>
-                        <option value="Malambo">Malambo</option>
-                        <!-- Bogotá, D.C. -->
-                        <option value="Bogotá">Bogotá</option>
-                        <!-- Bolívar -->
-                        <option value="Cartagena">Cartagena</option>
-                        <option value="Turbaco">Turbaco</option>
-                        <!-- Boyacá -->
-                        <option value="Tunja">Tunja</option>
-                        <option value="Duitama">Duitama</option>
-                        <!-- Caldas -->
-                        <option value="Manizales">Manizales</option>
-                        <option value="La Dorada">La Dorada</option>
-                        <!-- Caquetá -->
-                        <option value="Florencia">Florencia</option>
-                        <!-- Casanare -->
-                        <option value="Yopal">Yopal</option>
-                        <!-- Cauca -->
-                        <option value="Popayán">Popayán</option>
-                        <option value="Santander de Quilichao">Santander de Quilichao</option>
-                        <!-- Cesar -->
-                        <option value="Valledupar">Valledupar</option>
-                        <!-- Chocó -->
-                        <option value="Quibdó">Quibdó</option>
-                        <!-- Córdoba -->
-                        <option value="Montería">Montería</option>
-                        <!-- Cundinamarca -->
-                        <option value="Soacha">Soacha</option>
-                        <option value="Girardot">Girardot</option>
-                        <!-- Guainía -->
-                        <option value="Puerto Inírida">Puerto Inírida</option>
-                        <!-- Guaviare -->
-                        <option value="San José del Guaviare">San José del Guaviare</option>
-                        <!-- Huila -->
-                        <option value="Neiva">Neiva</option>
-                        <!-- La Guajira -->
-                        <option value="Riohacha">Riohacha</option>
-                        <!-- Magdalena -->
-                        <option value="Santa Marta">Santa Marta</option>
-                        <option value="Ciénaga">Ciénaga</option>
-                        <!-- Meta -->
-                        <option value="Villavicencio">Villavicencio</option>
-                        <option value="Acacías">Acacías</option>
-                        <!-- Nariño -->
-                        <option value="Pasto">Pasto</option>
-                        <option value="Tumaco">Tumaco</option>
-                        <!-- Norte de Santander -->
-                        <option value="Cúcuta">Cúcuta</option>
-                        <option value="Ocaña">Ocaña</option>
-                        <!-- Putumayo -->
-                        <option value="Mocoa">Mocoa</option>
-                        <!-- Quindío -->
-                        <option value="Armenia">Armenia</option>
-                        <!-- Risaralda -->
-                        <option value="Pereira">Pereira</option>
-                        <option value="Dosquebradas">Dosquebradas</option>
-                        <!-- San Andrés y Providencia -->
-                        <option value="San Andrés">San Andrés</option>
-                        <!-- Santander -->
-                        <option value="Bucaramanga">Bucaramanga</option>
-                        <option value="Floridablanca">Floridablanca</option>
-                        <!-- Sucre -->
-                        <option value="Sincelejo">Sincelejo</option>
-                        <!-- Tolima -->
-                        <option value="Ibagué">Ibagué</option>
-                        <!-- Valle del Cauca -->
-                        <option value="Cali">Cali</option>
-                        <option value="Buenaventura">Buenaventura</option>
-                        <!-- Vaupés -->
-                        <option value="Mitú">Mitú</option>
-                        <!-- Vichada -->
-                        <option value="Puerto Carreño">Puerto Carreño</option>
+                       <select class="custom-select" id="usp-custom-municipio-ciudad" name="ciudad" required>
+                       <option value="" disabled selected>Seleccionar..</option>
                        </select>
                      </div>
                      
@@ -459,9 +395,11 @@
              <div class="ml-4">
                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 
-               <button class="btn btn-secondary btn-pay" type="submit">Pagar <i class="fas fa-shopping-cart"></i></button>
+               <button class="btn btn-secondary btn-pay btn-loading" type="button" id="btn-pay">
+                Pagar <i class="fas fa-shopping-cart"></i>
+                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>              
+              </button>
 
-                              
              </div>
            </div>
          </div>
@@ -469,9 +407,9 @@
        </div>
      </div>
    </div>
-
    <!-- end service section -->
-   <!-- start include footer --> <?php include 'includes/footer.php' ?>
+   <!-- start include footer -->
+    <?php include 'includes/footer.php' ?>
    <!-- end include footer -->
   </body>
    </html>

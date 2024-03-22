@@ -3,8 +3,8 @@
 function obtenerConexion() {
     $servername = "localhost";
     $username = "root";
-    $password = "";
-    $dbname = "rifa_moto";
+    $password = ""; //credenciales desarrollo y produccion
+    $dbname = "u794556006_sorteo_01"; //ojo
 
     // Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
