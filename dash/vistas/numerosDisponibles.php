@@ -30,9 +30,8 @@ $resultado = $conn->query($sql);
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Números Vendidos
-                </div>
-                <div class="card-body">
+                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Agregar número Premiado 123</button></div>
+                    <div class="card-body">
                     <table id="datatablesSimple" class="table-striped">
                         <thead>
                             <tr>
@@ -58,7 +57,36 @@ $resultado = $conn->query($sql);
                 </div>
             </div>
         </div>
+
+        <!-- Modal agregar números premiados -->
+
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ingresar número premiado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="../functions/agregar-premiado.php">
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Número:</label>
+                        <input type="number" requiered class="form-control" id="numero_premiado" name="numero_premiado">
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                </div>
+                </div>
+                </form>
+            </div>
+            </div>
     </main>
+
+
 
          
 <!-- termina contenido -->
