@@ -32,6 +32,7 @@ foreach ($numeros as $numero) {
 // Cerrar la conexión
 $conexion->close();
 
-echo "Se han insertado 10,000 números únicos de cuatro cifras en la base de datos en desorden aleatorio con relleno de ceros.";
+//echo "Se han insertado 10,000 números únicos de cuatro cifras en la base de datos en desorden aleatorio con relleno de ceros.";
+
 
 ?>

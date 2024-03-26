@@ -1,1 +1,0 @@
-INSERT INTO ventas (nombre_cliente, cedula_cliente, correo_cliente, celular_cliente, departamento, ciudad, total_numeros, total_pagado, payment_id_mercadopago, external_reference_codigo_transaccion) VALUES ('Cristian Camilo Ceballos Marin', '23234', 'CEBALLOSMARINCRISTIANCAMILO@GMAIL.COM', '3252147589', 'Magdalena', 'SANTA MARTA', '2', '12000', '1317581308', '32346448');

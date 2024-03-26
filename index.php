@@ -1,23 +1,24 @@
-  
-   <?php include 'includes/header.php';
-         include 'config/config_bd.php';      
-        
-         $conn = obtenerConexion();
+<?php
+session_start();
+include 'includes/header.php';
+include 'config/config_bd.php';
+
+$conn = obtenerConexion();
 
       
-      $sql = "SELECT COUNT(numero) as total FROM numeros_vendidos";
-      $result = $conn->query($sql);
+$sql = "SELECT ROUND((COUNT(numero) / 10000) * 100) AS porcentaje FROM numeros_vendidos;";
+$result = $conn->query($sql);
 
-      if ($result->num_rows > 0) {
-          $row = $result->fetch_assoc();
-          $cantidadVendida = $row["total"];
-      } else {
-          $cantidadVendida = 0;
-      }
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $porcentaje = $row["porcentaje"];
+    $procentajeReal = $porcentaje .'%';
+} else {
+    $porcentaje = 0;
+}
 
-      $porcentaje = ($cantidadVendida / 1000) * 100;
-      $conn->close();
-   ?>
+$conn->close();
+?>
    
    <span class="ir-arriba"></span>
    <!-- banner -->
@@ -48,11 +49,13 @@
                 </h1>
                 <p class="text-center mb-0 mt-2">Por tan solo $6.000 (cada número) puedes participar y ganarte una espectacular Moto 0 KM.</p>
                 <div class="mt-5">
-                  <p class="mb-1 text-center fs-6">Números vendidos:</p>
-                  <div class="progress" style="height: 26px;">
-                  <div id="progress-bar" class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="<?php echo $porcentaje; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $porcentaje; ?>%</div>
-                  </div>                
+                <p class="mb-1 text-center fs-6">Números vendidos:</p>
+                <div class="progress" style="height: 26px; position: relative;">
+                <div id="progress-bar" class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="<?php echo $porcentaje; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $porcentaje; ?>%;">
                 </div>
+                <span class="progress-bar-text texto-barra"><?php echo $procentajeReal; ?></span>
+            </div>
+            </div>
               </div>
               <div class="text-bg mt-4">
                 <h2 class="yellow text-center">¿Dudas?</h2>
@@ -104,7 +107,7 @@
               <img class="img__sorteo" src="images/fondo.jpg" width="100%" alt="rifa-moto">
               <div class="numeros-premiados" data-aos="zoom-in">
                 <span class="text-bg p text-center">
-                <p class="text-premiados pb-2">Tenemos cinco (5) números premiados por <span class="paqute">$200.000</span> cada uno.</p>
+                <p class="text-premiados pb-2">Tenemos cinco (5) números premiados por <span class="paqute-200">$200.000</span> cada uno.</p>
                 <div class="text-center">
                 <span id="paquete-premios-numeros" class="paqute fondo-numero-premiado">4015</span> <span class="paqute fondo-numero-premiado">1250</span> <span class="paqute fondo-numero-premiado">3590</span> <span class="paqute fondo-numero-premiado">9478</span> <span class="paqute fondo-numero-premiado">5845</span>
 
@@ -365,7 +368,20 @@
                          <input type="number" class="form-control" placeholder="Especifica la cantidad:" aria-label="Celular" aria-describedby="Numero" id="otroInput" name="otroInput">
                        </div>
                      </div>
-                     <!-- Contenedor de totales -->
+
+ 
+                       <div class="input-group mb-3 ">
+                          <div class="form-check input-group-prepend">
+                          <input class="form-check-input" type="checkbox" value="Acepto" id="habeasData" required>
+                            <label class="form-check-label" for="habeasData">
+                              Acepto la Política de Protección de Datos Personales. <a class="habeas" target="_blank" href="docs/politica de proteccion de datos personale.pdf">(Consultar)</a>
+                            </label>
+                          </div>
+                     </div>
+  
+                       
+
+                      <!-- Contenedor de totales -->
                      <div class="d-flex">
                        <p>Números a Jugar: <strong>
                            <span></span>
@@ -395,7 +411,7 @@
              <div class="ml-4">
                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 
-               <button class="btn btn-secondary btn-pay btn-loading" type="button" id="btn-pay">
+               <button class="btn btn-secondary btn-pay btn-loading" type="submit" id="btn-pay">
                 Pagar <i class="fas fa-shopping-cart"></i>
                 <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>              
               </button>

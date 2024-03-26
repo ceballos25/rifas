@@ -1,39 +1,62 @@
 <?php
 
-require_once '../../config/config_bd.php';
+include "../config/config_db.php";
+require '../../vendor/autoload.php';
+'../../vendor/autoload.php';
 
-session_start();
-
-// Incluye la librería PHPMailer
+// // Incluye la librería PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Requiere el autoload de PHPMailer
-require '../../vendor/autoload.php';
 
-// Intenta establecer la conexión con la base de datos
-$conexion = obtenerConexion();
 
-if ($conexion) {
-    // Si se recibieron los datos almacenados en la sesión
-    if (isset($_SESSION['nombre'], $_SESSION['cedula'], $_SESSION['correo'], $_SESSION['celular'], $_SESSION['departamento'], $_SESSION['ciudad'], $_SESSION['totalNumeros'])) {
-        // Recupera y valida los datos almacenados en las sesiones
-        $nombre = validar($_SESSION['nombre']);
-        $cedula = validar($_SESSION['cedula']);
-        $correo = validar($_SESSION['correo']);
-        $celular = validar($_SESSION['celular']);
-        $departamento = validar($_SESSION['departamento']);
-        $ciudad = validar($_SESSION['ciudad']);
-        $totalNumeros = validar($_SESSION['totalNumeros']);
+
+// Verificar si se envió el formulario
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Conectar a la base de datos (reemplaza estos valores con los de tu conexión real)
+
+    $conexion = obtenerConexion();
+
+    // Verificar la conexión
+    if (!$conexion) {
+        die("Error de conexión: " . mysqli_connect_error());
+    }
+
+    // Escapar los valores recibidos del formulario
+    $nombre = mysqli_real_escape_string($conexion, $_POST["nombre"]);
+    $cedula = mysqli_real_escape_string($conexion, $_POST["cedula"]);
+    $correo = mysqli_real_escape_string($conexion, $_POST["correo"]);
+    $celular = mysqli_real_escape_string($conexion, $_POST["celular"]);
+    $departamento = mysqli_real_escape_string($conexion, $_POST["departamento"]);
+    $ciudad = mysqli_real_escape_string($conexion, $_POST["ciudad"]);
+    $comprobante = mysqli_real_escape_string($conexion, $_POST["comprobante"]);
+    $totalNumeros = mysqli_real_escape_string($conexion, $_POST["oportunidades"]);
+
+    // Procesar los datos según sea necesario
+    // Por ejemplo, puedes realizar operaciones con la base de datos o cualquier otra lógica de negocio aquí
 
         // Precio unitario de la rifa
-        $valorRifa = 1000;
+        $valorRifa = 6000;
 
         // Calcula el total a pagar por el usuario
-        $totalPagado = $valorRifa * $totalNumeros;
+        $totalAPagar = $valorRifa * $totalNumeros;
 
-        // Obtiene los datos de la URL
-        $payment_id = isset($_GET['payment_id']) ? $_GET['payment_id'] : '';
+        $payment_id = "VENTA MANUAL";
+
+        // Mostrar los datos recibidos
+        // echo "Nombre: " . $nombre . "<br>";
+        // echo "Cédula: " . $cedula . "<br>";
+        // echo "Correo: " . $correo . "<br>";
+        // echo "Celular: " . $celular . "<br>";
+        // echo "Departamento: " . $departamento . "<br>";
+        // echo "Ciudad: " . $ciudad . "<br>";
+        // echo "Comprobante de pago: " . $comprobante . "<br>";
+        // echo "Cantidad de números: " . $totalNumeros . "<br>";
+        // echo "Total a Pagar: " . $totalAPagar . "<br>";
+
+
+
+        // Genera el código único de transacción
         $codigoTransaccion = substr($cedula, -4) . mt_rand(1000, 9999);
 
         try {
@@ -50,7 +73,7 @@ if ($conexion) {
             if ($resultado_numeros->num_rows >= $totalNumeros) {
                 // Prepara la consulta SQL para insertar la venta
                 $consulta_venta = $conexion->prepare("INSERT INTO ventas (nombre_cliente, cedula_cliente, correo_cliente, celular_cliente, departamento, ciudad, total_numeros, total_pagado, payment_id_mercadopago, external_reference_codigo_transaccion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                $consulta_venta->bind_param("ssssssisss", $nombre, $cedula, $correo, $celular, $departamento, $ciudad, $totalNumeros, $totalPagado, $payment_id, $codigoTransaccion);
+                $consulta_venta->bind_param("ssssssisss", $nombre, $cedula, $correo, $celular, $departamento, $ciudad, $totalNumeros, $totalAPagar, $payment_id, $codigoTransaccion);
                 $consulta_venta->execute();
 
                 // Verifica si la inserción de la venta fue exitosa
@@ -105,17 +128,16 @@ if ($conexion) {
                     $conexion->commit();
 
                     try {
-                        $numeros_html = '';
-
-                        //numeros para la impresion en el correo
-                        foreach ($numeros_vendidos as $numero) {
-                            $numeros_html .= '<span style="margin-right: 10px;
-                            color: #fff;
-                            background-color: #000;
-                            padding: 5px;
-                            border-radius: 50%;
-                            font-weight: bold;;">' . $numero . '</span>';
+                       
+                        $numeros_html = '<div style="display: flex; flex-wrap: wrap;">';
+                        foreach ($numeros_vendidos as $key => $numero) {
+                            if ($key > 0 && $key % 10 === 0) {
+                                $numeros_html .= '</div><div style="display: flex; flex-wrap: wrap;">';
+                            }
+                            $numeros_html .= '<span style="margin-right: 10px; margin-bottom: 10px; color: #fff; background-color: #000; padding: 5px; border-radius: 50%; font-weight: bold; display: inline-block;">' . $numero . '</span>';
                         }
+                        $numeros_html .= '</div>';
+       
                         // Configura el servidor SMTP y crea una instancia de PHPMailer
                         $mail = new PHPMailer(true);
                         $mail->isSMTP();
@@ -165,11 +187,11 @@ if ($conexion) {
                             <h2 style="text-align: center">'. $nombre .'</h2>
                                 <img src="https://eldiadetusuerte.com/images/agradecimiento-2.png" alt="Imagen de agradecimiento" style="display: block; margin: 0 auto 20px; width: 100%;" >
                                 
-                                <p>Queremos agracerte por la compra, y esperamos que la suerte este de tu lado.</p>
+                                <p>Queremos agradecerte por tu compra en nuestro sitio.</p>
                                 <p>A continuacion los numeros generados por nuestro sistema.</p>
-                                <p><b>Recuerda:<b> el sorteo jugara con las (4) cifras de la L0t3teria de Medellin.</p>
+                                <p>Recuerda el sorteo jugara con las (4) cifras de la L0t3teria de Medellin.</p>
                                 <p>Al completar el 80% de los numeros, anunciaremos la fecha del sorteo en nuestro sitio Web y redes sociales.</p>
-                                    ' . $numeros_html . '
+                                <div class="badge-container">' . $numeros_html . '</div>
                                 <p>Te deseamos mucha suerte</p>
                             </div>
                         </body>
@@ -214,10 +236,6 @@ if ($conexion) {
         // Si no se encuentran los datos almacenados en la sesión, muestra un mensaje de error
         echo "Error: No se recibieron los datos del formulario.";
     }
-} else {
-    // Si la conexión a la base de datos no se estableció correctamente, muestra un mensaje de error
-    echo "Error de conexión a la base de datos.";
-}
 
 // Función para validar los datos recibidos
 function validar($dato) {
@@ -225,90 +243,43 @@ function validar($dato) {
     return htmlspecialchars(strip_tags(trim($dato)));
 }
 
-// Cierra la conexión
-$conexion->close();
+    // Cerrar la conexión
+    mysqli_close($conexion);
 
-// Desconfigura todas las variables de sesión
+    // Redireccionar o mostrar un mensaje de éxito
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmacion | El día de Tu Suerte</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-   <script src="../../js/popper.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-   <!-- sidebar -->
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   
+    <title>¡Gracias por tu Compra!</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/agradecimiento.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 
-   <!-- mercado pago -->
-   <script src="https://sdk.mercadopago.com/js/v2"></script>
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body class="mb-5">
 
-   <!-- icons -->
-   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-   <script src="https://kit.fontawesome.com/cf96aaa9b2.js" crossorigin="anonymous"></script>
-
-    <!-- descargar en imagen  -->
-   <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script></head>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-   <link rel="stylesheet" href="../../dash/css/agradecimiento.css">
-
-
-<script>
-const end = Date.now() + 15 * 100;
-
-// go Buckeyes!
-const colors = ["#FFA500", "#0f0"];
-
-(function frame() {
-  confetti({
-    particleCount: 2,
-    angle: 60,
-    spread: 55,
-    origin: { x: 0 },
-    colors: colors,
-  });
-
-  confetti({
-    particleCount: 2,
-    angle: 120,
-    spread: 55,
-    origin: { x: 1 },
-    colors: colors,
-  });
-
-  if (Date.now() < end) {
-    requestAnimationFrame(frame);
-  }
-})();
-</script>
-<body>
 <div class="container mt-1" style="background-color: #fff;">
     <div class="mt-2">
         <div class="card-header text-center" style="background-color: #fff;"></div>
-        <h4 class= "d-flex justify-content-center my-4"> <b><?php echo $nombre; ?></b></h4>
         <div class="">
             <div class="card mb-3">
-                <img src="../../dash/assets/img/agradecimiento-2.png" class="card-img-top" alt="...">
+                <img src="../assets/img/agradecimiento-2.png" class="card-img-top" alt="...">
             </div>
-            <ul class="list-group">
+            <ul class="list-group" style="background-color: #fff;">
+                <li class="list-group-item d-flex"><i class="fas fa-user me-1"></i> <b><?php echo $nombre ?></b></li>
                 <li class="list-group-item"> Queremos agracerte por la compra, y esperamos que la suerte esté de tu lado. 🍀</li>
-                <p class="list-group-item"> A continuacion los numeros generados por nuestro sistema, <br>Recuerda el sorteo jugará con las (4) cifras de la L0t3teria de Medellin. <p>
-                <p style="margin-left:15px">Al completar el <b>80%</b> de los numeros, anunciaremos la fecha del sorteo en nuestro sitio Web y redes sociales.</p>
+                <li class="list-group-item"> A continuacion los numeros generados por nuestro sistema, recuerda El sorteo jugara con las (4) cifras de la L0t3teria de Medellin. Al completar el 80% de los numeros, anunciaremos la fecha del sorteo en nuestro sitio Web y redes sociales.</li>
                 <li class="list-group-item">
                     <i class="fas fa-ticket-alt me-3"></i> <strong>Estos son tus números:</strong>
                     <div id="numeros_vendidos_container">
                         <?php
                             // Generar badges para cada número vendido
                             foreach ($numeros_vendidos as $numero) {
-                                echo '<span class=" badge-warning p-2 mt-2 badge text-bg-warning text-large" style="margin-right: 10px;">' . $numero . '</span>';
+                                echo '<span class="badge badge-warning p-2 mt-2 badge text-bg-warning" style="margin-right: 10px;">' . $numero . '</span>';
                             }
                         ?>
                     </div>
@@ -332,7 +303,7 @@ const colors = ["#FFA500", "#0f0"];
         const options = {
             filename: 'agradecimiento.pdf', // Nombre del archivo PDF
             html2canvas: { // Configuración para html2canvas
-                scale: 3, // Escala para mejorar la calidad de la imagen
+                scale: 2, // Escala para mejorar la calidad de la imagen
             },
             jsPDF: { // Configuración para jsPDF
                 format: 'letter', // Formato de página: 'letter', 'legal', 'tabloid', etc.
@@ -346,9 +317,6 @@ const colors = ["#FFA500", "#0f0"];
     }
 </script>
 
-<?php session_unset() ?>;
-</body>
-</html>
-        
+<?php session() ?>
 </body>
 </html>

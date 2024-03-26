@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Verifica si la variable de sesión específica está definida
+if (!isset($_SESSION['usuario_id'])) {
+    // La variable de sesión no está definida, redirige al usuario al índice
+    header("Location: ../../dash/");
+    exit(); // Asegura que el script se detenga después de redirigir
+}
+?>;
 <!DOCTYPE html>
 <html lang="es">
     <head>

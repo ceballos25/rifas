@@ -251,7 +251,7 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-  $(".formulario").submit(function (event) {
+  $("#formulario").submit(function (event) { // Cambiar ".formulario" a "#formulario" si el formulario tiene un ID llamado "formulario"
     // Evitar el envío automático del formulario
     event.preventDefault();
 
@@ -264,27 +264,30 @@ $(document).ready(function () {
       Swal.fire({
         icon: "error",
         title: "Algo Salió Mal",
-        text: "La cantidad Mínima para participar es de (2) números",
+        text: "Debes completar todos los campos, recuerda que la cantidad Mínima para participar es de (2) números",
         confirmButtonColor: "#000",
       });
     }
   });
+
   
-	// Función para validar campos
-	function validarCampos() {
-	  // Realiza la validación de tus campos aquí
-	  // Por ejemplo, verifica que los campos obligatorios estén completos
-	  var opcion_boletas = $("#opciones_boletas").val();
-	  var cantidad_boletas = $("#otroInput").val();
-  
-	  if (opcion_boletas === "Cantidad de Oportunidades" && cantidad_boletas < 2  || opcion_boletas === "Otro" && cantidad_boletas < 2 ) {
-		return false; // La validación falla si no se selecciona una opción válida
-	  }
-  
-	  // Puedes agregar más lógica de validación según tus requisitos
-  
-	  return true; // La validación pasa
-	}
+// Función para validar campos
+function validarCampos() {
+  // Realiza la validación de tus campos aquí
+  // Por ejemplo, verifica que los campos obligatorios estén completos
+  var opcion_boletas = $("#opciones_boletas").val();
+  var cantidad_boletas = $("#otroInput").val();
+  var habeas = $("#habeasData").prop('checked'); // Obtener el estado del checkbox
+
+  if ((opcion_boletas === "Cantidad de Oportunidades" && cantidad_boletas < 2) || (opcion_boletas === "Otro" && cantidad_boletas < 2) || !habeas) {
+    return false; // La validación falla si no se selecciona una opción válida o el checkbox no está marcado
+  }
+
+  // Puedes agregar más lógica de validación según tus requisitos
+
+  return true; // La validación pasa
+}
+
 	$('.ir-arriba').click(function(){
 		$('body, html').animate({
 			scrollTop: '0px'

@@ -27,7 +27,7 @@ if (isset($_POST['totalNumeros'])) {
                 $response = array('success' => true);
             } else {
                 // Si no hay suficientes números disponibles, devuelve una respuesta de error
-                $response = array('success' => false, 'message' => 'La cantidad solicitada supera la cantidad disponible, inténtalo con una cantidad menor');
+                $response = array('success' => false, 'message' => 'La cantidad solicitada supera la cantidad disponible, actualmente tenemos disponible: ' . $totalDisponibles .'  números.');
             }
         } else {
             // Si no se obtuvo un resultado, devuelve una respuesta de error

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-03-2024 a las 02:39:28
+-- Tiempo de generación: 24-03-2024 a las 16:49:02
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,19 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `rifa_moto`
+-- Base de datos: `u794556006_sorteo_01`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `numeros`
+--
+
+CREATE TABLE `numeros` (
+  `id` int(11) NOT NULL,
+  `numero` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -33,13 +44,26 @@ CREATE TABLE `numeros_vendidos` (
   `numero` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `numeros_vendidos`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-INSERT INTO `numeros_vendidos` (`id`, `id_venta`, `numero`) VALUES
-(39712, 36, '7231'),
-(39713, 36, '1565');
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
+  `usuario` varchar(20) NOT NULL,
+  `contrasena` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `contrasena`) VALUES
+(3, 'Jorge Herrera', 'jorge.6', '$2y$10$ClqZhSNf9DwIaX3rNJjRfO5/x6HCU14jNZqdEJ5HoAXjDwo205MZ.'),
+(4, 'Enrrique', 'enrrique.6', '$2y$10$vPryy50cHqO4G5F5KdZG6O3mwCEaIyWSRyPsXus680AXZMXYXsIH6');
 
 -- --------------------------------------------------------
 
@@ -49,64 +73,78 @@ INSERT INTO `numeros_vendidos` (`id`, `id_venta`, `numero`) VALUES
 
 CREATE TABLE `ventas` (
   `id` int(11) NOT NULL,
-  `referencia_pago` varchar(50) NOT NULL,
-  `id_ref_payco` varchar(255) NOT NULL,
-  `respuesta` varchar(20) NOT NULL,
-  `motivo` varchar(255) NOT NULL,
-  `banco` varchar(255) NOT NULL,
-  `recibo` varchar(255) NOT NULL,
-  `total` varchar(255) NOT NULL,
-  `fecha_transaccion` datetime NOT NULL,
   `nombre_cliente` varchar(255) NOT NULL,
   `cedula_cliente` varchar(15) NOT NULL,
   `correo_cliente` varchar(255) NOT NULL,
   `celular_cliente` varchar(11) NOT NULL,
   `departamento` varchar(50) NOT NULL,
   `ciudad` varchar(50) NOT NULL,
-  `total_numeros` int(11) NOT NULL
+  `total_numeros` int(11) NOT NULL,
+  `total_pagado` varchar(255) NOT NULL,
+  `payment_id_mercadopago` varchar(50) NOT NULL,
+  `external_reference_codigo_transaccion` varchar(50) NOT NULL,
+  `fecha_venta` datetime NOT NULL DEFAULT current_timestamp(),
+  `codigo_sorteo` varchar(5) NOT NULL DEFAULT '#0001'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `ventas`
---
-
-INSERT INTO `ventas` (`id`, `referencia_pago`, `id_ref_payco`, `respuesta`, `motivo`, `banco`, `recibo`, `total`, `fecha_transaccion`, `nombre_cliente`, `cedula_cliente`, `correo_cliente`, `celular_cliente`, `departamento`, `ciudad`, `total_numeros`) VALUES
-(36, '198923779', 'a7a5be60c3c62ff67655bc13', 'Aceptada', 'Aprobada', 'BANCO DE PRUEBAS', '198923779', '10000', '2024-03-16 20:32:01', 'Cristian Camilo Ceballos Marin', '1007581003', 'CEBALLOSMARINCRISTIANCAMILO@GMAIL.COM', '3245894268', 'Antioquia', 'Medellín', 2);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `numeros`
+--
+ALTER TABLE `numeros`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `numero` (`numero`);
+
+--
 -- Indices de la tabla `numeros_vendidos`
 --
 ALTER TABLE `numeros_vendidos`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `numero` (`numero`),
   ADD KEY `id_venta` (`id_venta`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_ref_payco` (`id_ref_payco`),
-  ADD UNIQUE KEY `referencia_pago` (`referencia_pago`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `numeros`
+--
+ALTER TABLE `numeros`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `numeros_vendidos`
 --
 ALTER TABLE `numeros_vendidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39714;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas

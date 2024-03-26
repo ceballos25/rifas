@@ -132,6 +132,10 @@ h6 a {
      opacity: 1
 }
 
+input[type="text"]:focus, input[type="email"]:focus{
+     text-transform: none !important;
+}
+
 .text-deration {
      border-bottom: 1px solid #0f0;
 }
@@ -210,6 +214,11 @@ img {
      font-style: oblique;
 }
 
+.texto-barra{
+     font-size: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: bold;
+
+}
+
 .form-control:focus {
      border-color: #ffffff !important;
      box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .25);
@@ -283,6 +292,7 @@ button {
      -webkit-box-shadow: 1px 3px 4px 5px rgba(0, 255, 0, 0.75);
      -moz-box-shadow: 1px 5px 10px 6px rgba(0, 255, 0, 0.75);
      box-shadow: 1px 3px 4px 5px rgba(0, 255, 0, 0.75);
+     margin-top: 10px;
 }
 
 .contenedor__img-sorteo {
@@ -383,7 +393,7 @@ button {
 
 .banner_main {
      height: auto;
-     padding: 127px 0px 0px 0px;
+     padding: 90px 0px 0px 0px;
      background-size: 100% 100%;
      background-repeat: no-repeat;
      overflow: hidden;
@@ -563,7 +573,7 @@ span.fondo-numero-premiado{
 
 .custom-select:focus {
      border: 1px solid #0F0 !important;
-     text-transform: capitalize
+
 }
 
 
