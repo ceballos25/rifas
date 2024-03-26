@@ -27,6 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Escapar los valores recibidos del formulario
     $numero_premiado = mysqli_real_escape_string($conexion, $_POST["numero_premiado"]);
 
+    if ($numero_premiado == 0) {
+        
     try {
         // Inicia una transacción
         $conexion->begin_transaction();
@@ -89,6 +91,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conexion->close();
 } else {
     // Si no se envió el formulario por el método POST, muestra un mensaje de error
-    echo "Error: No se recibió el formulario.";
+    echo "<script>
+    Swal.fire({
+        title: '¡Algo salió mal!',
+        text: 'Deberás completar el campo',
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#000'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = '../vistas/numerosDisponibles.php';
+        }
+    });
+    </script>";
 }
+    }
 ?>

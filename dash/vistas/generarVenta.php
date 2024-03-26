@@ -101,6 +101,13 @@
                 </main>
 <!-- termina contenido -->
 
+<script>
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+        // Deshabilitar el botón al enviar el formulario
+        document.getElementById("btn-submit").disabled = true;
+    });
+</script>
+
 <!-- inicia footer -->
 <?php
 include '../include/footer.php';
