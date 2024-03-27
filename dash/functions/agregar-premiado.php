@@ -24,11 +24,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Error de conexión: " . mysqli_connect_error());
     }
 
-    // Escapar los valores recibidos del formulario
-    $numero_premiado = mysqli_real_escape_string($conexion, $_POST["numero_premiado"]);
+// Escapar los valores recibidos del formulario
+$numero_premiado = mysqli_real_escape_string($conexion, $_POST["numero_premiado"]);
 
-    if ($numero_premiado == 0) {
-        
+// Verificar si el número es cero
+if ($numero_premiado != 0) {
     try {
         // Inicia una transacción
         $conexion->begin_transaction();
@@ -40,12 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Verifica si la inserción del número premiado fue exitosa
         if ($consulta_numero_premiado->affected_rows > 0) {
+            // Mensaje de éxito
             echo "<script>
             Swal.fire({
                 title: '¡Perfecto!',
                 text: 'El número $numero_premiado se agregó correctamente.',
                 icon: 'success',
-                confirmButtonText: 'Aceptar',
+                confirmButtonText: 'Rregresar',
                 confirmButtonColor: '#000'
             }).then((result) => {
                 if (result.isConfirmed) {
@@ -55,12 +56,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </script>";
             $conexion->commit();
         } else {
+            // Mensaje de error
             echo "<script>
             Swal.fire({
                 title: '¡Algo salió mal!',
                 text: 'No se pudo agregar el número $numero_premiado.',
                 icon: 'error',
-                confirmButtonText: 'Aceptar',
+                confirmButtonText: 'Rregresar',
                 confirmButtonColor: '#000'
             }).then((result) => {
                 if (result.isConfirmed) {
@@ -77,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             title: 'Algo salió mal!',
             text: 'No se pudo agregar el número $numero_premiado. Verifique e inténtelo nuevamente.',
             icon: 'error',
-            confirmButtonText: 'Aceptar',
+            confirmButtonText: 'Rregresar',
             confirmButtonColor: '#000'
         }).then((result) => {
             if (result.isConfirmed) {
@@ -90,13 +92,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Cerrar la conexión
     $conexion->close();
 } else {
-    // Si no se envió el formulario por el método POST, muestra un mensaje de error
+    // Si el número es cero, muestra un mensaje de error
     echo "<script>
     Swal.fire({
         title: '¡Algo salió mal!',
-        text: 'Deberás completar el campo',
+        text: 'El número premiado no puede ser cero.',
         icon: 'error',
-        confirmButtonText: 'Aceptar',
+        confirmButtonText: 'Rregresar',
         confirmButtonColor: '#000'
     }).then((result) => {
         if (result.isConfirmed) {
@@ -105,5 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     });
     </script>";
 }
-    }
+
+}
+
 ?>

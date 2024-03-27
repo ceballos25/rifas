@@ -72,7 +72,7 @@ $resultado = $conn->query($sql);
                     <form method="post" action="../functions/agregar-premiado.php">
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Número:</label>
-                        <input type="number" requiered class="form-control" id="numero_premiado" name="numero_premiado">
+                        <input type="number" requiered class="form-control" id="numero_premiado" name="numero_premiado" required>
                     </div>
                     
                 </div>
