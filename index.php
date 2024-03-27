@@ -1,5 +1,16 @@
 <?php
 session_start();
+
+// Verifica si ya existe un token CSRF en la sesión
+if (!isset($_SESSION['csrf_token'])) {
+    // Si no existe, genera un nuevo token y almacénalo en la sesión
+    $csrf_token = bin2hex(random_bytes(32)); // Generar un nuevo token CSRF
+    $_SESSION['csrf_token'] = $csrf_token;
+} else {
+    // Si ya existe un token CSRF en la sesión, usa el existente
+    $csrf_token = $_SESSION['csrf_token'];
+}
+
 include 'includes/header.php';
 include 'config/config_bd.php';
 
@@ -368,7 +379,7 @@ $conn->close();
                          <input type="number" class="form-control" placeholder="Especifica la cantidad:" aria-label="Celular" aria-describedby="Numero" id="otroInput" name="otroInput">
                        </div>
                      </div>
-
+                     <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
  
                        <div class="input-group mb-3 ">
                           <div class="form-check input-group-prepend">

@@ -1,8 +1,23 @@
 <?php
+session_start();
+
+// Verificar si el token CSRF ya está en la sesión
+if (!isset($_SESSION['csrf_token'])) {
+    header('Location: /rifas'); // Redirige al usuario al inicio de la página principal
+    exit();    
+}
+
+// Obtener el token CSRF de la sesión
+$csrf_token = $_SESSION['csrf_token'];
+
+// Validar el token CSRF recibido en la URL
+if (!isset($_GET['csrf_token']) || $_GET['csrf_token'] !== $csrf_token) {
+    header('Location: /rifas'); // Redirige al usuario al inicio de la página principal    
+    exit(); 
+}
 
 require_once '../../config/config_bd.php';
 
-session_start();
 
 // Incluye la librería PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
@@ -15,16 +30,17 @@ require '../../vendor/autoload.php';
 $conexion = obtenerConexion();
 
 if ($conexion) {
-    // Si se recibieron los datos almacenados en la sesión
-    if (isset($_SESSION['nombre'], $_SESSION['cedula'], $_SESSION['correo'], $_SESSION['celular'], $_SESSION['departamento'], $_SESSION['ciudad'], $_SESSION['totalNumeros'])) {
-        // Recupera y valida los datos almacenados en las sesiones
-        $nombre = validar($_SESSION['nombre']);
-        $cedula = validar($_SESSION['cedula']);
-        $correo = validar($_SESSION['correo']);
-        $celular = validar($_SESSION['celular']);
-        $departamento = validar($_SESSION['departamento']);
-        $ciudad = validar($_SESSION['ciudad']);
-        $totalNumeros = validar($_SESSION['totalNumeros']);
+    // Si se recibieron los datos almacenados en la URL
+    if (isset($_GET['nombre'], $_GET['cedula'], $_GET['correo'], $_GET['celular'], $_GET['departamento'], $_GET['ciudad'], $_GET['totalNumeros'], $_GET['csrf_token'])) {
+
+        // Recupera y valida los datos almacenados en la URL
+        $nombre = validar($_GET['nombre']);
+        $cedula = validar($_GET['cedula']);
+        $correo = validar($_GET['correo']);
+        $celular = validar($_GET['celular']);
+        $departamento = validar($_GET['departamento']);
+        $ciudad = validar($_GET['ciudad']);
+        $totalNumeros = validar($_GET['totalNumeros']);
 
         // Precio unitario de la rifa
         $valorRifa = 1000;
@@ -35,6 +51,9 @@ if ($conexion) {
         // Obtiene los datos de la URL
         $payment_id = isset($_GET['payment_id']) ? $_GET['payment_id'] : '';
         $codigoTransaccion = substr($cedula, -4) . mt_rand(1000, 9999);
+
+        // Eliminar el token CSRF de la sesión
+        unset($_SESSION['csrf_token']);
 
         try {
             // Inicia una transacción
@@ -103,6 +122,7 @@ if ($conexion) {
 
                     // Confirma la transacción
                     $conexion->commit();
+                                        
 
                     try {
                         $numeros_html = '';
@@ -187,8 +207,10 @@ if ($conexion) {
                         $mail->addBCC('info@eldiadetusuerte.com', 'Copia oculta');
 
 
-                        // Envía el correo electrónico
+                        // Envía el correo electrónico                        
                         $mail->send();
+
+                    
                     } catch (Exception $e) {
                         echo "Error al enviar el correo electrónico: {$mail->ErrorInfo}";
                     }
@@ -227,6 +249,8 @@ function validar($dato) {
 
 // Cierra la conexión
 $conexion->close();
+
+session_unset();
 
 // Desconfigura todas las variables de sesión
 ?>
@@ -317,6 +341,7 @@ const colors = ["#FFA500", "#0f0"];
             </ul>
             <div class="text-center mt-2">
             <button onclick="descargarComoPDF()" class="btn btn-sm btn-success">Descargar PDF</button>
+            <button" class="btn btn-sm btn-secondary">Regresar</button>
             </div>
         </div>
     </div>
